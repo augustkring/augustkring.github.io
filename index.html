@@ -3,546 +3,1765 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>The New Practice Mindset · NPM</title>
-  <meta name="description" content="Humans, organizations, AI — one operating language. Co-created with AI, legible to everyone.">
-  <meta property="og:title" content="The New Practice Mindset">
-  <meta property="og:description" content="Humans, organizations, AI — one operating language.">
+  <title>August Kring · Human OS</title>
+  <meta name="description" content="Before we can build what truly matters, we must understand how we're wired. Explore August Kring's mission, beliefs, traits, and working style.">
+  <meta property="og:title" content="August Kring · Human OS">
+  <meta property="og:description" content="Before we can build what truly matters, we must understand how we're wired — and how the people around us are too.">
   <meta property="og:type" content="website">
+  <meta property="og:url" content="https://augustkring.com">
+  <meta property="og:image" content="https://augustkring.com/assets/og-image.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="August Kring · Human OS">
+  <meta name="twitter:description" content="Before we can build what truly matters, we must understand how we're wired — and how the people around us are too.">
+  <meta name="twitter:image" content="https://augustkring.com/assets/og-image.jpg">
+  <link rel="canonical" href="https://augustkring.com">
   <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◉</text></svg>">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="assets/styles.css">
+  <style>
+    /* ── Design tokens ── */
+    :root {
+      --petrol: #2A5D58;
+      --petrol-dark: #1B3D3A;
+      --sand: #EDD4C3;
+      --white: #FAFAF8;
+      --ink-0: #0F0E0D;
+      --ink-1: #1A1918;
+      --ink-2: #33302D;
+      --ink-3: #54504C;
+      --ink-4: #858079;
+      --ink-7: #E5E4E0;
+      --surface-1: rgba(255,255,255,0.72);
+      --surface-2: rgba(255,255,255,0.5);
+      --border-soft: rgba(255,255,255,0.92);
+      --s1: 4px; --s2: 8px; --s3: 12px; --s4: 16px; --s5: 24px; --s6: 32px; --s7: 40px; --s8: 48px; --s9: 64px; --s10: 80px; --s11: 96px; --s12: 120px; --s13: 160px;
+      --max-content: 1160px;
+      --reading: 760px;
+      --shadow-soft: 0 12px 40px rgba(17,17,17,0.06);
+      --shadow-float: 0 20px 60px rgba(17,17,17,0.08);
+      --section-rule: rgba(15,14,13,0.07);
+    }
+
+    /* ── Reset & base (mobile-first) ── */
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 72px; }
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at top left, rgba(237,212,195,0.06), transparent 22%),
+        radial-gradient(circle at top right, rgba(42,93,88,0.02), transparent 20%),
+        linear-gradient(180deg, #fefefe 0%, #ffffff 42%, #fefefe 100%);
+      color: var(--ink-0);
+      font-family: 'Inter', sans-serif;
+      font-size: 15px;
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    a { color: inherit; text-decoration: none; }
+    p, h1, h2, h3, h4 { margin: 0; }
+
+    /* ── Layout ── */
+    .page { width: min(calc(100% - 32px), var(--max-content)); margin: 0 auto; padding-bottom: 0; display: flex; flex-direction: column; gap: var(--s10); }
+    .section { padding: 0; }
+
+    /* ── Header ── */
+    .header-wrap {
+      position: sticky;
+      top: 0;
+      z-index: 350;
+      background: rgba(255,255,255,0.85);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid transparent;
+      transition: border-color 280ms ease, background 280ms ease;
+    }
+    .header-wrap.scrolled {
+      border-bottom-color: rgba(15,14,13,0.06);
+      background: rgba(255,255,255,0.95);
+    }
+    .site-header {
+      position: relative;
+      width: min(calc(100% - 32px), var(--max-content));
+      margin: 0 auto;
+      min-height: 56px;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      align-items: center;
+      padding: 10px 0 8px;
+    }
+    .brand {
+      font-family: 'Montserrat', sans-serif;
+      font-weight: 900;
+      font-size: 22px;
+      line-height: 0.9;
+      letter-spacing: -0.03em;
+      color: var(--petrol);
+      white-space: nowrap;
+    }
+    .nav-group, .nav { display: none; }
+
+    /* ── Mobile hamburger (CSS-only) ── */
+    .menu-toggle { display: none; }
+    .menu-btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      cursor: pointer;
+      position: relative;
+      z-index: 400;
+      -webkit-tap-highlight-color: transparent;
+    }
+    .menu-btn span,
+    .menu-btn span::before,
+    .menu-btn span::after {
+      display: block;
+      width: 22px;
+      height: 2px;
+      background: var(--ink-1);
+      border-radius: 2px;
+      transition: all 280ms ease;
+      position: relative;
+    }
+    .menu-btn span::before,
+    .menu-btn span::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      width: 22px;
+    }
+    .menu-btn span::before { top: -7px; }
+    .menu-btn span::after { top: 7px; }
+    .menu-toggle:checked + .menu-btn span { background: transparent; }
+    .menu-toggle:checked + .menu-btn span::before { top: 0; transform: rotate(45deg); background: var(--ink-1); }
+    .menu-toggle:checked + .menu-btn span::after { top: 0; transform: rotate(-45deg); background: var(--ink-1); }
+    .mobile-nav {
+      position: fixed;
+      inset: 0;
+      z-index: 300;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: var(--s7);
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 280ms ease;
+    }
+    .menu-toggle:checked ~ .mobile-nav {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .mobile-nav.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+    .header-wrap.menu-open {
+      background: transparent;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      border-bottom-color: transparent;
+    }
+    .mobile-nav a {
+      font-family: 'Outfit', sans-serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: var(--ink-1);
+      letter-spacing: -0.02em;
+      transition: color 180ms ease;
+    }
+    .mobile-nav a:hover { color: var(--petrol); }
+    .header-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: fit-content;
+      margin-left: auto;
+      min-height: 34px;
+      padding: 2px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 600;
+      border: 1px solid rgba(15,14,13,0.06);
+      background: rgba(255,255,255,0.52);
+      color: var(--ink-3);
+      white-space: nowrap;
+      letter-spacing: 0.08em;
+      gap: 1px;
+      text-transform: uppercase;
+    }
+    .header-cta .lang-option {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 36px;
+      min-height: 28px;
+      padding: 0 10px;
+      border-radius: 999px;
+    }
+    .header-cta .lang-current {
+      background: rgba(255,255,255,0.92);
+      color: var(--petrol-dark);
+      box-shadow: 0 6px 16px rgba(17,17,17,0.04);
+    }
+    .header-cta .lang-alt { color: var(--ink-4); }
+    .site-header > .nav-external { display: none; }
+    .nav-external {
+      display: inline-flex;
+      align-items: center;
+      gap: 4px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--petrol-dark);
+      white-space: nowrap;
+      transition: color 180ms ease;
+    }
+    .nav-external:hover { color: var(--petrol); }
+    .nav-external svg {
+      width: 13px;
+      height: 13px;
+      transition: transform 180ms ease;
+    }
+    .nav-external:hover svg { transform: translate(1px, -1px); }
+    .mobile-nav .nav-external {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin-top: var(--s5);
+      padding-top: var(--s5);
+      border-top: 1px solid rgba(15,14,13,0.08);
+      font-size: 22px;
+      color: var(--petrol-dark);
+    }
+    .mobile-nav .nav-external svg { width: 16px; height: 16px; }
+
+    /* ── Typography ── */
+    .eyebrow {
+      display: inline-block;
+      margin-bottom: var(--s4);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+    }
+    h1, h2, h3, h4 { font-family: 'Outfit', sans-serif; color: var(--ink-0); }
+    h1 {
+      font-size: clamp(36px, 10vw, 62px);
+      line-height: 0.96;
+      letter-spacing: -0.038em;
+      max-width: 14ch;
+      font-weight: 760;
+    }
+    h2 {
+      font-size: clamp(28px, 8vw, 46px);
+      line-height: 1.02;
+      letter-spacing: -0.028em;
+      margin-bottom: var(--s4);
+      max-width: 18ch;
+    }
+    h3 {
+      font-size: 22px;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      margin-bottom: var(--s3);
+      font-weight: 650;
+    }
+    h4 {
+      font-size: 18px;
+      line-height: 1.18;
+      letter-spacing: -0.01em;
+      margin-bottom: var(--s2);
+      font-weight: 600;
+    }
+    .body-copy { font-size: 15px; line-height: 1.8; color: var(--ink-3); max-width: var(--reading); }
+
+    /* ── Hero ── */
+    .hero {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s5);
+      align-items: start;
+      padding-top: var(--s6);
+    }
+    .hero-copy {
+      order: 1;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+    .hero-sub-row {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--s4);
+      margin-top: var(--s7);
+    }
+    .hero-sub-content {
+      display: flex;
+      flex-direction: column;
+    }
+    .hero-sub-content .eyebrow {
+      margin-bottom: var(--s2);
+    }
+    .hero-avatar-img {
+      width: 136px;
+      height: 136px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: center top;
+      border: 2px solid rgba(255,255,255,0.9);
+      box-shadow: 0 4px 12px rgba(17,17,17,0.08);
+      flex-shrink: 0;
+    }
+    .hero-sub {
+      max-width: 40rem;
+      margin-top: 0;
+      font-size: 16px;
+      line-height: 1.72;
+      color: var(--ink-3);
+    }
+    .hero-linkedin {
+      margin-top: var(--s4);
+    }
+    .hero-visual {
+      order: 2;
+      display: none;
+    }
+    .portrait-shell {
+      position: relative;
+      width: min(60%, 260px);
+      aspect-ratio: 4 / 5;
+      z-index: 2;
+      margin: 0 auto;
+    }
+    .portrait-inner {
+      width: 100%;
+      height: 100%;
+    }
+    .section-photo {
+      width: 100%;
+      height: 100%;
+      border-radius: 16px;
+      background: linear-gradient(180deg, rgba(42,93,88,0.08), rgba(237,212,195,0.18)), linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.28));
+      border: 1px solid rgba(255,255,255,0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--petrol-dark);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      text-align: center;
+      padding: var(--s4);
+      position: relative;
+      overflow: hidden;
+    }
+    .portrait-inner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 16px;
+    }
+    .section-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: inherit;
+      position: relative;
+      z-index: 1;
+    }
+    .section-photo::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(255,255,255,0.38), rgba(255,255,255,0.04));
+      pointer-events: none;
+    }
+
+    /* ── Section heads ── */
+    .section-head { max-width: var(--reading); margin-bottom: var(--s6); }
+    .section-head p { margin-top: var(--s4); }
+    .section-head-wide { max-width: 860px; }
+
+    /* ── Mission & Vision ── */
+    .mission-vision-layout {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s7);
+      align-items: stretch;
+    }
+    .mission-vision-photo {
+      order: -1;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.8);
+      box-shadow: var(--shadow-soft);
+      background: linear-gradient(180deg, rgba(42,93,88,0.08), rgba(237,212,195,0.18)), linear-gradient(135deg, rgba(255,255,255,0.9), rgba(255,255,255,0.28));
+      min-height: 240px;
+    }
+    .mission-vision-photo img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 16px;
+    }
+    .mission-vision {
+      display: grid;
+      gap: var(--s8);
+      margin-top: var(--s6);
+    }
+    .mission-vision-block { display: grid; gap: var(--s4); }
+    .mission-vision-block .label {
+      font-family: 'Outfit', sans-serif;
+      font-size: 22px;
+      line-height: 1.15;
+      letter-spacing: -0.015em;
+      color: var(--ink-0);
+      font-weight: 600;
+    }
+    .mission-vision-block p {
+      font-size: 15px;
+      line-height: 1.8;
+      color: var(--ink-3);
+      max-width: 44rem;
+    }
+
+    /* ── Beliefs ── */
+    .belief-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s8);
+      counter-reset: belief;
+      align-items: start;
+    }
+    .belief {
+      position: relative;
+      padding: 0;
+      max-width: 100%;
+      margin: 0;
+    }
+    .belief::before {
+      counter-increment: belief;
+      content: '0' counter(belief);
+      display: inline-block;
+      margin-bottom: var(--s3);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      color: rgba(133,128,121,0.7);
+    }
+    .belief h3 { font-size: 23px; margin-bottom: var(--s4); }
+    .belief p { font-size: 15px; line-height: 1.8; color: var(--ink-3); max-width: 58ch; }
+    .belief > p:first-of-type {
+      padding-bottom: 0;
+      border-bottom: 0;
+    }
+    .belief p + p { margin-top: var(--s3); }
+
+    /* ── Read more (shared) ── */
+    details.read-more { margin-top: var(--s4); border-top: 0; padding-top: 0; }
+    details.read-more summary {
+      cursor: pointer;
+      list-style: none;
+      font-family: 'Outfit', sans-serif;
+      font-weight: 600;
+      color: var(--petrol-dark);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin: 0;
+      min-height: 44px;
+    }
+    details.read-more summary::-webkit-details-marker { display: none; }
+    details.read-more summary .less { display: none; }
+    details.read-more summary::after {
+      content: '+';
+      width: 20px;
+      height: 20px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(42,93,88,0.04);
+      color: var(--petrol-dark);
+      font-size: 14px;
+      line-height: 1;
+    }
+    details.read-more[open] summary .more { display: none; }
+    details.read-more[open] summary .less { display: inline; }
+    details.read-more[open] summary::after { content: '\2013'; }
+    .belief details.read-more { margin-top: var(--s5); }
+    .belief details.read-more[open] { display: grid; gap: var(--s4); }
+    .belief details.read-more[open] p { max-width: 52ch; line-height: 1.92; }
+
+    /* ── Image breaks ── */
+    .image-break {
+      margin: -8px 0;
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.9);
+      box-shadow: var(--shadow-float);
+      background: rgba(255,255,255,0.55);
+    }
+    .image-break::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(180deg, rgba(15,14,13,0.18) 0%, rgba(15,14,13,0.05) 36%, rgba(15,14,13,0.06) 100%);
+      pointer-events: none;
+    }
+    .image-break img {
+      display: block;
+      width: 100%;
+      height: clamp(260px, 38vw, 420px);
+      object-fit: cover;
+      object-position: center;
+    }
+    .image-quote {
+      position: absolute;
+      left: 16px;
+      bottom: 16px;
+      z-index: 1;
+      width: min(70%, 560px);
+    }
+    .image-quote p {
+      font-family: 'Montserrat', sans-serif;
+      font-size: clamp(22px, 5.5vw, 46px);
+      line-height: 1.1;
+      letter-spacing: -0.035em;
+      font-weight: 900;
+      color: rgba(255,250,244,0.98);
+      text-shadow: 0 4px 20px rgba(15,14,13,0.26);
+    }
+    .image-quote cite {
+      display: block;
+      margin-top: 10px;
+      font-style: normal;
+      font-size: clamp(10px, 2.5vw, 15px);
+      line-height: 1.5;
+      color: rgba(255,246,235,0.84);
+      text-shadow: 0 2px 12px rgba(15,14,13,0.22);
+      max-width: 34ch;
+    }
+    .image-quote-right {
+      left: auto;
+      right: 16px;
+      text-align: right;
+    }
+    .image-quote-right cite {
+      margin-left: auto;
+    }
+    .image-quote-narrow {
+      width: min(44%, 460px);
+    }
+
+    /* ── Traits cards (Mindsets / Skillsets) ── */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s7);
+    }
+    .panel {
+      display: flex;
+      flex-direction: column;
+      min-height: 100%;
+      background: linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.42));
+      border: 1px solid rgba(255,255,255,0.78);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(17,17,17,0.04);
+      backdrop-filter: blur(14px) saturate(125%);
+      -webkit-backdrop-filter: blur(14px) saturate(125%);
+      padding: var(--s5);
+    }
+    .who-card {
+      background: transparent;
+      border: 0;
+      border-radius: 0;
+      box-shadow: none;
+      backdrop-filter: none;
+      -webkit-backdrop-filter: none;
+      padding: 0;
+    }
+    .who-card-inner { display: flex; flex-direction: column; min-height: 100%; }
+    .who-card h3 { margin-bottom: var(--s5); }
+    .who-list { display: grid; gap: 0; }
+    .who-item {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr);
+      column-gap: 8px;
+      row-gap: 8px;
+      align-items: start;
+      min-height: 0;
+      padding-bottom: var(--s5);
+    }
+    .who-item h4, .who-item p { grid-column: 2; margin: 0; }
+    .who-item h4 { line-height: 1.12; padding-top: 1px; }
+    .who-item p {
+      line-height: 1.74;
+      font-size: 15px;
+      color: var(--ink-3);
+    }
+    .item-no {
+      grid-column: 1;
+      grid-row: 1;
+      display: inline-block;
+      padding-top: 3px;
+      text-align: left;
+      min-width: 24px;
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(133,128,121,0.7);
+    }
+    .who-card details.read-more { margin-top: var(--s3); padding-top: 0; border-top: 0; }
+    .who-card details.read-more:not([open]) .who-list { display: none; }
+    .who-card details.read-more[open] { display: flex; flex-direction: column; gap: var(--s4); }
+    .who-card details.read-more[open] summary { order: 2; margin-top: var(--s2); }
+    .who-card details.read-more[open] .who-list { order: 1; }
+    .list-item + .list-item { padding-top: var(--s4); border-top: 1px solid rgba(133,128,121,0.12); }
+
+    /* ── Section intro ── */
+    .section-intro {
+      display: grid;
+      gap: var(--s4);
+      max-width: 820px;
+    }
+    .section-intro p {
+      max-width: 44rem;
+      font-size: 15px;
+      line-height: 1.85;
+      color: var(--ink-3);
+    }
+
+    /* ── Personality Types (tab switcher) ── */
+    .framework-section-head {
+      display: block;
+      margin: 0 0 var(--s8);
+      max-width: 860px;
+    }
+    .trait-shell { display: grid; gap: var(--s4); }
+    .trait-shell > input { position: absolute; opacity: 0; pointer-events: none; }
+    .trait-switcher {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      width: fit-content;
+      max-width: 100%;
+      position: relative;
+      z-index: 1;
+    }
+    .trait-switcher label {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      padding: 0 14px;
+      border-radius: 10px;
+      background: transparent;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--ink-3);
+      cursor: pointer;
+      transition: background 180ms ease, color 180ms ease, box-shadow 180ms ease;
+    }
+    #trait-hd:checked ~ .trait-switcher label[for="trait-hd"],
+    #trait-mbti:checked ~ .trait-switcher label[for="trait-mbti"],
+    #trait-enneagram:checked ~ .trait-switcher label[for="trait-enneagram"],
+    #trait-bg5:checked ~ .trait-switcher label[for="trait-bg5"],
+    #trait-um:checked ~ .trait-switcher label[for="trait-um"] {
+      background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(255,255,255,0.8));
+      color: var(--petrol-dark);
+      box-shadow: 0 8px 20px rgba(17,17,17,0.05);
+    }
+    .trait-panels { position: relative; }
+    .trait-panel {
+      display: none;
+      gap: var(--s5);
+      padding: 0;
+    }
+    #trait-hd:checked ~ .trait-panels .panel-hd,
+    #trait-mbti:checked ~ .trait-panels .panel-mbti,
+    #trait-enneagram:checked ~ .trait-panels .panel-enneagram,
+    #trait-bg5:checked ~ .trait-panels .panel-bg5,
+    #trait-um:checked ~ .trait-panels .panel-um {
+      display: grid;
+    }
+    .trait-layout { display: grid; gap: var(--s5); }
+    .trait-side {
+      display: grid;
+      gap: var(--s3);
+    }
+    .trait-meta {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+    }
+    .trait-type {
+      font-family: 'Outfit', sans-serif;
+      font-size: clamp(26px, 3.5vw, 34px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+      font-weight: 700;
+      color: var(--ink-0);
+    }
+    .panel-um .trait-type {
+      font-size: clamp(22px, 2.8vw, 32px);
+      line-height: 1.1;
+      letter-spacing: -0.02em;
+    }
+    .trait-summary {
+      font-size: 15px;
+      line-height: 1.75;
+      color: var(--ink-3);
+      max-width: 48ch;
+      margin-top: var(--s3);
+    }
+    .trait-details { display: none; }
+    .trait-stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--s4);
+      align-content: start;
+    }
+    .trait-stat {
+      display: grid;
+      gap: 4px;
+    }
+    .trait-stat-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+    }
+    .trait-stat-value {
+      font-family: 'Outfit', sans-serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--ink-0);
+      line-height: 1.3;
+    }
+    .trait-analysis { margin-top: var(--s3); }
+    .trait-analysis details.read-more { margin-top: 0; border-top: 0; padding-top: 0; }
+    .trait-analysis .trait-details { display: grid; gap: var(--s5); }
+    .trait-analysis .trait-details > .trait-block:first-child { padding-top: 0; border-top: 0; }
+    .trait-deep { display: grid; gap: var(--s5); margin-top: var(--s4); }
+    .trait-block {
+      display: grid;
+      gap: 12px;
+      padding-top: var(--s5);
+      border-top: 1px solid rgba(133,128,121,0.1);
+    }
+    .trait-block-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--petrol);
+    }
+    .trait-block p { font-size: 15px; line-height: 1.84; color: var(--ink-3); }
+
+    /* ── Experience ── */
+    .story-stack { display: grid; gap: 0; }
+    .experience-card {
+      display: grid;
+      gap: var(--s5);
+      padding: var(--s6) 0;
+    }
+    .experience-card:first-child {
+      padding-top: 0;
+    }
+    .experience-card + .experience-card {
+      border-top: 1px solid rgba(133,128,121,0.16);
+    }
+    .experience-meta { display: grid; gap: var(--s3); align-content: start; }
+    .experience-years {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+    }
+    .experience-place {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--ink-4);
+    }
+    .experience-copy { display: grid; gap: var(--s5); align-content: start; }
+    .experience-copy > p:first-of-type {
+      font-size: 16px;
+      line-height: 1.72;
+      color: var(--ink-2);
+    }
+    .skills-line {
+      margin-top: var(--s3);
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.06em;
+      color: var(--ink-4);
+      line-height: 1.8;
+    }
+
+    /* ── Credentials ── */
+    .section#credentials { margin-top: -20px; }
+    .credentials-grid { display: grid; grid-template-columns: 1fr; gap: var(--s7); }
+    .credentials-column { display: grid; gap: var(--s3); align-content: start; }
+    .credentials-list .credential-row:first-child { padding-top: 0; }
+    .credentials-list { display: grid; gap: var(--s3); align-content: start; }
+    .credential-row {
+      display: grid;
+      grid-template-columns: 24px minmax(0, 1fr);
+      column-gap: 8px;
+      align-items: start;
+      padding: 14px 0;
+      border-bottom: 1px solid rgba(15,14,13,0.05);
+    }
+    .credential-row:last-child { border-bottom: 0; padding-bottom: 0; }
+    .credential-row > div { display: grid; gap: 2px; }
+    .credential-label {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 10px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--petrol);
+    }
+    .credential-school { color: var(--ink-4); font-size: 13px; line-height: 1.5; }
+
+    /* ── Story (timeline) ── */
+    .history-layout { display: grid; grid-template-columns: 1fr; gap: var(--s6); }
+    .history-side { margin-bottom: 0; }
+    .timeline { display: grid; gap: var(--s5); }
+    .timeline-item {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s4);
+      padding: 0 0 var(--s4);
+      border-bottom: 1px solid rgba(133,128,121,0.18);
+    }
+    .timeline-item:last-child { border-bottom: 0; padding-bottom: 0; }
+    .timeline-year {
+      font-family: 'IBM Plex Mono', monospace;
+      font-size: 11px;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--petrol);
+      padding-top: 0;
+    }
+    .timeline-copy { max-width: 720px; }
+    .timeline-copy h4 { margin-bottom: var(--s2); }
+    .timeline-copy p { font-size: 15px; line-height: 1.8; color: var(--ink-3); text-wrap: pretty; }
+
+    /* ── Contact ── */
+    .cta-shell {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: var(--s6);
+      background: linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.42));
+      border: 1px solid rgba(255,255,255,0.78);
+      border-radius: 14px;
+      box-shadow: 0 8px 24px rgba(17,17,17,0.04);
+      backdrop-filter: blur(14px) saturate(125%);
+      -webkit-backdrop-filter: blur(14px) saturate(125%);
+      padding: var(--s6);
+    }
+    .contact {
+      display: flex;
+      flex-direction: column;
+      gap: var(--s5);
+      justify-content: flex-start;
+    }
+    .contact-links { display: flex; flex-direction: column; gap: var(--s5); padding-top: var(--s5); }
+    .contact-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 15px;
+      font-weight: 500;
+      color: var(--petrol-dark);
+      transition: color 180ms ease;
+    }
+    .contact-link:hover { color: var(--petrol); }
+    .contact-link svg { flex-shrink: 0; color: var(--ink-4); transition: color 180ms ease; }
+    .contact-link:hover svg { color: var(--petrol-dark); }
+    .cta-photo {
+      min-height: 200px;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .cta-photo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center top;
+      border-radius: 12px;
+    }
+    .section-photo { min-height: 100%; width: 100%; }
+    .download-link {
+      margin-top: var(--s4);
+      padding-top: var(--s5);
+      border-top: 1px solid rgba(133,128,121,0.12);
+    }
+    .compare-teaser {
+      margin-top: var(--s6);
+    }
+    .compare-teaser-inner {
+      padding: var(--s6);
+      border-radius: 12px;
+      border: 1px dashed rgba(42,93,88,0.2);
+      background: rgba(42,93,88,0.03);
+    }
+    .compare-teaser h3 {
+      font-size: 20px;
+      margin-bottom: var(--s3);
+      color: var(--petrol-dark);
+    }
+    .compare-teaser p {
+      font-size: 14px;
+      line-height: 1.7;
+      color: var(--ink-3);
+      max-width: 64ch;
+    }
+
+    /* ── Footer ── */
+    .site-footer { padding: var(--s5) 0 var(--s5); }
+    .footer-shell {
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      gap: var(--s3);
+      flex-wrap: wrap;
+    }
+    .footer-shell p { font-size: 13px; color: var(--ink-4); }
+
+    /* ── Desktop (min-width: 981px) ── */
+    @media (min-width: 981px) {
+      .site-header {
+        width: min(calc(100% - 40px), var(--max-content));
+        padding: 12px 0 10px;
+        grid-template-columns: 220px 1fr 220px;
+      }
+      .menu-btn, .mobile-nav, .menu-toggle { display: none !important; }
+      .site-header > .nav-external { display: inline-flex; justify-self: end; }
+      .nav-group {
+        display: flex;
+        justify-content: center;
+        min-width: 0;
+      }
+      .nav {
+        display: flex;
+        justify-content: center;
+        gap: 0;
+        min-width: 0;
+        align-items: center;
+        max-width: max-content;
+      }
+      .nav a {
+        font-size: 15px;
+        white-space: nowrap;
+        color: var(--ink-2);
+        display: inline-flex;
+        align-items: center;
+      }
+      .nav a + a { margin-left: 26px; }
+      .nav a:hover { color: var(--petrol-dark); }
+      .page { width: min(calc(100% - 40px), var(--max-content)); gap: var(--s13); }
+      .section { padding: 0; }
+      .section-head { margin-bottom: var(--s6); }
+      .framework-section-head { margin: 0 0 var(--s6); }
+      .trait-layout { gap: var(--s9); }
+      .trait-side { gap: var(--s3); }
+      .experience-card { gap: var(--s4); padding: var(--s6) 0; }
+      .experience-card:first-child { padding-top: 0; }
+      .timeline { gap: var(--s5); }
+      .timeline-item { padding-bottom: var(--s4); }
+      .hero {
+        grid-template-columns: 0.92fr 1.08fr;
+        min-height: min(760px, calc(82vh - 68px));
+        gap: var(--s8);
+        align-items: end;
+      }
+      .hero-sub-row .hero-avatar-img { display: none; }
+      .hero-sub-row { margin-top: var(--s5); }
+      .hero-copy { order: 1; padding: var(--s6) 0 22px; }
+      .hero-sub { font-size: 17px; line-height: 1.82; margin-top: 0; }
+      .hero-visual { order: 2; display: flex; min-height: 640px; align-items: end; padding: 0 var(--s2); }
+      .portrait-shell { width: min(100%, 450px); margin: 0 0 0 auto; }
+      .portrait-inner img { border-radius: 20px; }
+      .image-break { margin: -20px 0; border-radius: 28px; }
+      .image-quote { left: 28px; bottom: 28px; width: min(52%, 560px); }
+      .image-quote p { font-size: clamp(26px, 3vw, 46px); line-height: 1.08; }
+      .image-quote cite { font-size: clamp(12px, 0.95vw, 15px); margin-top: 14px; }
+      .image-quote-right { left: auto; right: 28px; }
+      .panel { border-radius: 18px; padding: var(--s5); }
+      .cta-shell { border-radius: 18px; padding: var(--s5); }
+      .cta-photo { border-radius: 20px; }
+      .cta-photo img { border-radius: 20px; }
+      .section-photo { border-radius: 20px; }
+      .mission-vision-photo { border-radius: 20px; }
+      .mission-vision-photo img { aspect-ratio: auto; height: 450px; border-radius: 20px; }
+      .mission-vision { gap: var(--s7); margin-top: var(--s6); }
+      .compare-teaser { margin-top: var(--s6); }
+      .compare-teaser-inner { padding: var(--s5); border-radius: 16px; }
+      .mission-vision-layout {
+        grid-template-columns: 0.85fr 1fr;
+        gap: var(--s9);
+        align-items: center;
+      }
+      .mission-vision-photo {
+        order: -1;
+      }
+      .belief-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--s5);
+      }
+      .belief { padding: var(--s6) 0; max-width: 100%; margin: 0; }
+      .belief-grid .belief:nth-child(-n+2) {
+        padding-top: 0;
+      }
+      .two-col {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--s8);
+        align-items: stretch;
+      }
+      .trait-layout {
+        grid-template-columns: 1.4fr 0.6fr;
+        gap: var(--s9);
+        align-items: start;
+      }
+      .section#credentials { margin-top: -60px; }
+      .credentials-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: var(--s5);
+        align-items: start;
+      }
+      .history-layout {
+        grid-template-columns: 280px minmax(0, 1fr);
+        gap: calc(var(--s8) + var(--s2));
+        align-items: start;
+      }
+      .history-side { position: sticky; top: 96px; margin-bottom: 0; }
+      .timeline-item { grid-template-columns: 110px 1fr; gap: var(--s4); }
+      .timeline-year { padding-top: 4px; }
+      .experience-card {
+        grid-template-columns: 280px minmax(0, 1fr);
+        column-gap: calc(var(--s8) + 4px);
+        align-items: start;
+      }
+      .cta-shell {
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: var(--s5);
+        align-items: stretch;
+      }
+      .cta-photo { min-height: 320px; }
+      .trait-shell { gap: var(--s4); }
+      .trait-panel { gap: var(--s5); }
+      .trait-stats { gap: var(--s3); }
+      .trait-analysis { margin-top: var(--s3); }
+      .trait-summary { margin-top: var(--s2); }
+      .credentials-column { gap: var(--s2); }
+      .credentials-list { gap: var(--s2); }
+      .credential-row { padding: 12px 0; }
+      .experience-copy { gap: var(--s3); }
+      .experience-meta { gap: var(--s2); }
+      .section-intro { gap: var(--s4); }
+      .contact { gap: var(--s3); }
+      .contact-links { gap: var(--s3); }
+      .download-link { margin-top: var(--s3); padding-top: var(--s4); }
+      .site-footer { padding: var(--s2) 0 var(--s3); }
+      .timeline-copy h4 { margin-bottom: 6px; }
+      .footer-shell { margin: 0 auto; padding: var(--s5) var(--s6); }
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ── Header ─────────────────────────────────────────────── -->
+  <!-- ── Header ── -->
   <div class="header-wrap">
-    <header class="site-header">
-      <a href="index.html" class="brand" aria-label="NPM home">
-        <span class="brand-dot"></span>
-        <span>NPM</span>
-        <span class="brand-sub">The New Practice Mindset</span>
-      </a>
-
-      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" />
-      <label for="menu-toggle" class="menu-btn" aria-hidden="true"><span></span></label>
-
-      <nav class="nav" aria-label="Primary">
-        <a href="human-os.html">Human&nbsp;OS</a>
-        <a href="business-os.html">Business&nbsp;OS</a>
-        <a href="agentic-os.html">Agentic&nbsp;OS</a>
-        <a href="#start" class="btn btn-ghost" style="min-height: 40px; padding: 0 18px; font-size: 14px;">Co-create yours</a>
+  <header class="site-header">
+    <a href="/" class="brand">August Kring</a>
+    <div class="nav-group">
+      <nav class="nav">
+        <a href="#mission">Mission</a>
+        <a href="#beliefs">Beliefs</a>
+        <a href="#traits">Traits</a>
+        <a href="#experience">Experience</a>
+        <a href="#story">Story</a>
+        <a href="#contact">Connect</a>
       </nav>
-
-      <div class="mobile-nav" role="menu">
-        <a href="human-os.html">Human OS</a>
-        <a href="business-os.html">Business OS</a>
-        <a href="agentic-os.html">Agentic OS</a>
-        <a href="#start">Co-create yours</a>
-        <span class="nav-meta">NPM · v0.4 mockup</span>
-      </div>
-    </header>
+    </div>
+    <a href="https://humanos.com" target="_blank" rel="noreferrer" class="nav-external">Human OS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+    <!-- Mobile hamburger menu -->
+    <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle menu">
+    <label for="menu-toggle" class="menu-btn"><span></span></label>
+  </header>
   </div>
+
+  <nav class="mobile-nav" id="mobile-nav">
+    <a href="#mission">Mission</a>
+    <a href="#beliefs">Beliefs</a>
+    <a href="#traits">Traits</a>
+    <a href="#experience">Experience</a>
+    <a href="#story">Story</a>
+    <a href="#contact">Connect</a>
+    <a href="https://humanos.com" target="_blank" rel="noreferrer" class="nav-external">Human OS <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7"/><path d="M7 7h10v10"/></svg></a>
+  </nav>
+
+  <script>
+    const hw = document.querySelector('.header-wrap');
+    window.addEventListener('scroll', () => {
+      hw.classList.toggle('scrolled', window.scrollY > 10);
+    }, { passive: true });
+
+    const menuToggle = document.getElementById('menu-toggle');
+    const mobileNav = document.getElementById('mobile-nav');
+    const navLinks = mobileNav.querySelectorAll('a');
+    menuToggle.addEventListener('change', () => {
+      mobileNav.classList.toggle('open', menuToggle.checked);
+      hw.classList.toggle('menu-open', menuToggle.checked);
+    });
+    navLinks.forEach(link => {
+      link.addEventListener('click', () => {
+        menuToggle.checked = false;
+        mobileNav.classList.remove('open');
+        hw.classList.remove('menu-open');
+      });
+    });
+  </script>
 
   <main class="page">
 
-    <!-- ── Hero ────────────────────────────────────────────── -->
-    <section class="section hero fade-in">
-      <div class="hero-copy">
-        <span class="eyebrow">The New Practice Mindset</span>
-        <h1>Humans, organizations, AI&nbsp;— one operating language.</h1>
-        <p class="deck">Output is cheap. Alignment is scarce. NPM is the shared map — co-created with AI, read by everyone.</p>
-
-        <div class="hero-cta-row">
-          <a href="#start" class="btn btn-primary">Co-create your OS
-            <span class="arr" aria-hidden="true">→</span>
-          </a>
-          <a href="#how" class="btn-link">See how it works <span class="arr" aria-hidden="true">↓</span></a>
-        </div>
-
-        <div class="hero-meta">
-          <span class="dot"></span>
-          <span>Open framework · Built with AI, not despite it</span>
-        </div>
-      </div>
-
-      <div class="hero-visual">
-        <!-- ══ ILLUSTRATION: Triad ══ -->
-        <svg class="illus illus-triad" viewBox="0 0 560 520" role="img" aria-label="Three OS layers compound into NPM">
-          <defs>
-            <radialGradient id="t-hum" cx="50%" cy="32%" r="68%">
-              <stop offset="0%" stop-color="#3E7E79"/>
-              <stop offset="100%" stop-color="#2A5D58"/>
-            </radialGradient>
-            <radialGradient id="t-biz" cx="50%" cy="32%" r="68%">
-              <stop offset="0%" stop-color="#A5644E"/>
-              <stop offset="100%" stop-color="#8A4F3B"/>
-            </radialGradient>
-            <radialGradient id="t-agt" cx="50%" cy="32%" r="68%">
-              <stop offset="0%" stop-color="#5B779B"/>
-              <stop offset="100%" stop-color="#3D5A7D"/>
-            </radialGradient>
-          </defs>
-
-          <!-- Curved connectors (part of composition, not dividers) -->
-          <g fill="none" stroke-linecap="round" opacity="0.28">
-            <path d="M 248 156 Q 160 240 150 322" stroke="#2A5D58" stroke-width="1.8"/>
-            <path d="M 205 370 Q 280 400 355 370" stroke="#54504C" stroke-width="1.8"/>
-            <path d="M 410 322 Q 400 240 312 156" stroke="#3D5A7D" stroke-width="1.8"/>
-          </g>
-
-          <!-- Center compound dot -->
-          <circle cx="280" cy="262" r="5" fill="#1B3D3A"/>
-          <circle cx="280" cy="262" r="14" fill="none" stroke="#2A5D58" stroke-width="1" opacity="0.3"/>
-
-          <!-- Human node -->
-          <a href="human-os.html">
-            <g transform="translate(280, 110)">
-              <circle r="68" fill="url(#t-hum)"/>
-              <circle cx="0" cy="-16" r="10" fill="#FAFAF8"/>
-              <path d="M -20 12 Q 0 -8 20 12 L 20 28 L -20 28 Z" fill="#FAFAF8"/>
-            </g>
-            <text x="280" y="212" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#2A5D58" letter-spacing="1.6" font-weight="500">LAYER 01</text>
-            <text x="280" y="232" text-anchor="middle" font-family="Outfit, sans-serif" font-size="19" font-weight="700" fill="#1A1918" letter-spacing="-0.4">Human OS</text>
-          </a>
-
-          <!-- Business node -->
-          <a href="business-os.html">
-            <g transform="translate(140, 360)">
-              <circle r="68" fill="url(#t-biz)"/>
-              <rect x="-24" y="-20" width="14" height="40" rx="1.5" fill="#FAFAF8"/>
-              <rect x="-5" y="-12" width="14" height="32" rx="1.5" fill="#FAFAF8"/>
-              <rect x="14" y="-4" width="14" height="24" rx="1.5" fill="#FAFAF8"/>
-            </g>
-            <text x="140" y="462" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A4F3B" letter-spacing="1.6" font-weight="500">LAYER 02</text>
-            <text x="140" y="482" text-anchor="middle" font-family="Outfit, sans-serif" font-size="19" font-weight="700" fill="#1A1918" letter-spacing="-0.4">Business OS</text>
-          </a>
-
-          <!-- Agentic node -->
-          <a href="agentic-os.html">
-            <g transform="translate(420, 360)">
-              <circle r="68" fill="url(#t-agt)"/>
-              <path d="M 0 -24 L 24 0 L 0 24 L -24 0 Z" fill="#FAFAF8"/>
-              <circle cx="0" cy="0" r="4" fill="#3D5A7D"/>
-            </g>
-            <text x="420" y="462" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#3D5A7D" letter-spacing="1.6" font-weight="500">LAYER 03</text>
-            <text x="420" y="482" text-anchor="middle" font-family="Outfit, sans-serif" font-size="19" font-weight="700" fill="#1A1918" letter-spacing="-0.4">Agentic OS</text>
-          </a>
-
-          <!-- Center label -->
-          <text x="280" y="292" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#858079" letter-spacing="2" font-weight="500">COMPOUNDED BY</text>
-          <text x="280" y="314" text-anchor="middle" font-family="Outfit, sans-serif" font-size="24" font-weight="800" fill="#1B3D3A" letter-spacing="-0.6">NPM</text>
-        </svg>
-      </div>
-    </section>
-
-    <!-- ── OUTCOME (what changes when this exists) ───────── -->
-    <section class="section fade-in">
-      <div class="section-head">
-        <span class="eyebrow">The outcome</span>
-        <h2>What changes when all three layers speak the same language.</h2>
-        <p>Impact comes first. Before any framework is worth installing, it has to change something real about how humans, organizations, and AI actually operate together.</p>
-      </div>
-
-      <div class="outcome-grid">
-        <div class="outcome-item">
-          <div class="outcome-from">
-            <span class="before">Guessing</span>
-            <span class="to-arrow" aria-hidden="true">→</span>
-            <span class="after">Reading</span>
+    <!-- ── 1. Hero ── -->
+    <section class="section">
+      <div class="hero">
+        <div class="hero-copy">
+          <h1>Before we can build what truly matters, we must understand how we're wired — and how the people around us are too.</h1>
+          <div class="hero-sub-row">
+            <img class="hero-avatar-img" src="assets/august_profile.jpg" alt="August Kring" />
+            <div class="hero-sub-content">
+              <span class="eyebrow">My Human OS</span>
+              <p class="hero-sub">This is my Human OS. How I think, how I operate, and what I bring into any collaboration.</p>
+              <a class="contact-link hero-linkedin" href="https://www.linkedin.com/in/augustkring/" target="_blank" rel="noreferrer">
+                <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+                LinkedIn
+              </a>
+            </div>
           </div>
-          <h3>Fit becomes legible.</h3>
-          <p>The wiring of a person, an organization, and an AI agent gets mapped on the same framework — so "does this person fit this role" stops being an instinct and starts being a read.</p>
         </div>
-        <div class="outcome-item">
-          <div class="outcome-from">
-            <span class="before">Performing</span>
-            <span class="to-arrow" aria-hidden="true">→</span>
-            <span class="after">Operating</span>
-          </div>
-          <h3>People stop selling themselves.</h3>
-          <p>When you have a shared manual for how you actually work, the interview game breaks. Résumés compress. Partnerships shortcut the months of surface-level dance.</p>
-        </div>
-        <div class="outcome-item">
-          <div class="outcome-from">
-            <span class="before">Generic AI</span>
-            <span class="to-arrow" aria-hidden="true">→</span>
-            <span class="after">Your AI</span>
-          </div>
-          <h3>AI gets the context automatically.</h3>
-          <p>Every agent in your life or your org runs on the same operating language you do. No more pasting your story into every new prompt. No more losing the thread every session.</p>
+        <div class="hero-visual">
+          <div class="portrait-shell"><div class="portrait-inner"><img src="assets/august_profile.jpg" alt="August Kring" /></div></div>
         </div>
       </div>
     </section>
 
-    <!-- ── Image break 1 ─────────────────────────────────── -->
-    <div class="image-break fade-in">
+    <!-- ── 2. Mission & Vision ── -->
+    <section class="section" id="mission">
+      <div class="mission-vision-layout">
+        <div>
+          <span class="eyebrow">Mission &amp; Vision</span>
+          <h2>What I'm building toward.</h2>
+          <div class="mission-vision">
+            <div class="mission-vision-block">
+              <div class="label">Mission</div>
+              <p>Reshaping how people and organizations adopt the mindset, practice, and AI collaboration needed to drive real impact, together.</p>
+            </div>
+            <div class="mission-vision-block">
+              <div class="label">Vision</div>
+              <p>A world where people, teams, and AI systems think and adapt together — and co-create in ways that serve people, planet, and profit as one.</p>
+            </div>
+          </div>
+        </div>
+        <div class="mission-vision-photo">
+          <img src="assets/forest-2.jpg" alt="Forest landscape" loading="lazy" />
+        </div>
+      </div>
+    </section>
+
+    <!-- ── 3. My Beliefs ── -->
+    <section class="section" id="beliefs">
+      <div class="section-head"><span class="eyebrow">My Beliefs</span><h2>What I stand for.</h2></div>
+      <div class="belief-grid">
+
+        <article class="belief">
+          <h3>Impact</h3>
+          <p>People, planet, and profit belong in one equation. Not three.</p>
+          <details class="read-more">
+            <summary><span class="more">Read more</span><span class="less">Read less</span></summary>
+            <p>The best products and partnerships are the ones where making money and making a difference reinforce each other. Not as a nice idea. As a design principle.</p>
+            <p>Every system, every collaboration should produce something that holds up humanly, environmentally, and financially. AI makes this more possible than ever — if we use it to extend how we think and create, not just how we automate.</p>
+            <p>Co-creation over own-creation. Shared knowledge over hoarded advantage.</p>
+          </details>
+        </article>
+
+        <article class="belief">
+          <h3>Mindset</h3>
+          <p>Learn. Unlearn. Relearn. That is the only mindset that holds.</p>
+          <details class="read-more">
+            <summary><span class="more">Read more</span><span class="less">Read less</span></summary>
+            <p>Mindset is everything. In a world where AI is reshaping industries, new ways of working appear overnight, and no one can predict what comes next. The way people think decides whether they adapt or get left behind.</p>
+            <p>That means building mindsets — across people, organizations, and AI systems — that can learn, unlearn, and relearn with minimal friction. When that foundation is shared, real co-creation becomes possible. Without it, nothing holds.</p>
+          </details>
+        </article>
+
+        <article class="belief">
+          <h3>Execution</h3>
+          <p>Strategy without execution is just a story you tell yourself.</p>
+          <details class="read-more">
+            <summary><span class="more">Read more</span><span class="less">Read less</span></summary>
+            <p>Think big, start small, scale fast. Always in that order.</p>
+            <p>Build the smallest thing that proves it works. Scale what gets traction. Kill what doesn't. Stay capital efficient — not spending more, but spending right.</p>
+            <p>With AI in the mix, execution speed is the real edge. Clear standards for how humans and AI contribute together is what turns ideas into products and revenue.</p>
+            <p>Execution is not the follow-up to strategy. It is the strategy.</p>
+          </details>
+        </article>
+
+        <article class="belief">
+          <h3>Relationships</h3>
+          <p>What you build is only as strong as who you build it with.</p>
+          <details class="read-more">
+            <summary><span class="more">Read more</span><span class="less">Read less</span></summary>
+            <p>Once you know how you are wired, you can find the people who complement it. The right alignment brings trust, perspective, and access to opportunities that do not exist in isolation.</p>
+            <p>But it is not just about fit. Building a strong network — and showing up with directness, commitment, and honesty — is what opens the door to creating something far greater than anything you could build on your own. That is the real leverage.</p>
+          </details>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- Image break 1 -->
+    <div class="image-break">
       <div class="image-quote">
-        <p>"The three layers stop operating on different vocabularies."</p>
-        <cite>&mdash; NPM · the unlock</cite>
+        <p>"The secret of change is to focus all of your energy not on fighting the old, but on building the new."</p>
+        <cite>&mdash; "Socrates," gas-station attendant (Way of the Peaceful Warrior)</cite>
       </div>
-      <img src="assets/forest.jpg" alt="Forest canopy" loading="lazy" />
+      <img src="assets/road.jpg" alt="Road through landscape" loading="lazy" />
     </div>
 
-    <!-- ── PAIN (what breaks today) ────────────────────────── -->
-    <section class="section fade-in">
-      <div class="section-head">
-        <span class="eyebrow">The pain</span>
-        <h2>Right now, everyone is guessing at everyone else.</h2>
-        <p>The cost of misalignment isn't theoretical. It shows up in hires that don't work, partnerships that crack, founders who burn out, and AI that forgets who you are every time you open a new tab.</p>
-      </div>
-
-      <div class="numbered-grid">
-        <div class="numbered-item">
-          <h3>People are invisible to each other</h3>
-          <p>Résumés describe jobs, not wiring. New hires spend six months decoding the culture. Co-founders discover they work nothing alike — after the cap table is signed.</p>
-        </div>
-        <div class="numbered-item">
-          <h3>Organizations are invisible to themselves</h3>
-          <p>The real wiring lives in founders' heads, in fragments of decks, in unwritten rules only old-timers know. The pitch is clean. The operation is a rumor.</p>
-        </div>
-        <div class="numbered-item">
-          <h3>AI is invisible by default</h3>
-          <p>Generic agents mirror the user — agree more, smooth edges, flatter. Useful for tasks. A disaster for judgment. And the context resets every session.</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── HOW IT WORKS — intro ───────────────────────────── -->
-    <section id="how" class="section fade-in">
+    <!-- ── 4. My Traits ── -->
+    <section class="section" id="traits">
       <div class="section-head section-head-wide">
-        <span class="eyebrow">How it works</span>
-        <h2>One framework. Three layers. One language.</h2>
-        <p>Each layer makes the invisible wiring of a person, an organization, or an AI agent legible. Read them in order. Each one stands alone. Together, they compound into a shared operating language across the three.</p>
+        <span class="eyebrow">My Traits</span>
+        <h2>What I bring and how I think.</h2>
+        <div class="section-intro">
+          <p>I pull from different fields, find what connects, and turn it into something with direction. I work with AI to extend what people can do — and lead with enough clarity that everyone involved knows where we're heading.</p>
+        </div>
+      </div>
+
+      <!-- Mindsets + Skillsets -->
+      <div class="two-col">
+        <div class="who-card">
+          <div class="who-card-inner">
+            <h3>5 Mindsets</h3>
+            <div class="who-list">
+              <div class="who-item"><span class="item-no">01</span><h4>Strategic</h4><p>I look past the immediate to where things are heading — what connects, what compounds, and which move shapes the strongest outcome.</p></div>
+              <div class="who-item"><span class="item-no">02</span><h4>Builder</h4><p>I am the one who builds first. I take the idea, deliver something tangible, hand it off, then move on to the next direction while others take it further.</p></div>
+            </div>
+            <details class="read-more">
+              <summary><span class="more">Read more</span><span class="less">Read less</span></summary>
+              <div class="who-list">
+                <div class="who-item"><span class="item-no">03</span><h4>Curious</h4><p>I dig until I understand how things actually work. That is what keeps me learning, adapting, and never settling on what I already know.</p></div>
+                <div class="who-item"><span class="item-no">04</span><h4>Connective</h4><p>I see connections others miss. Between ideas, people, and fields — and I pull them together into something that opens a new path forward.</p></div>
+                <div class="who-item"><span class="item-no">05</span><h4>Conceptual</h4><p>I think in frameworks and underlying logic. I take what is complex, strip it down, and give it a shape that others can understand and act on.</p></div>
+              </div>
+            </details>
+          </div>
+        </div>
+
+        <div class="who-card">
+          <div class="who-card-inner">
+            <h3>5 Skillsets</h3>
+            <div class="who-list">
+              <div class="who-item"><span class="item-no">01</span><h4>AI Orchestration</h4><p>I design and direct AI systems so that vision, mindset, and standards translate into meaningful execution — not just automation.</p></div>
+              <div class="who-item"><span class="item-no">02</span><h4>Concept Development</h4><p>I take early ideas and give them a sharp enough shape that people know what it is, why it matters, and what to do next.</p></div>
+            </div>
+            <details class="read-more">
+              <summary><span class="more">Read more</span><span class="less">Read less</span></summary>
+              <div class="who-list">
+                <div class="who-item"><span class="item-no">03</span><h4>Market Validation</h4><p>I test ideas against real demand early, so what gets built is grounded in relevance, not assumption. Experimentation over analysis.</p></div>
+                <div class="who-item"><span class="item-no">04</span><h4>Go-to-Market Strategy</h4><p>I bridge the gap between a solid concept and the people it is built for. Positioning, timing, and the path that gets it adopted.</p></div>
+                <div class="who-item"><span class="item-no">05</span><h4>Strategic Leadership</h4><p>I set the direction and make sure everyone — people and AI — knows where we are going, why it matters, and what their part is.</p></div>
+              </div>
+            </details>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- ── Layer 01 · Human OS ─────────────────────────────── -->
-    <section class="section os-section human fade-in">
-      <div class="os-copy">
-        <span class="os-layer-mark" aria-hidden="true">01</span>
-        <span class="eyebrow">Layer 01 · Human OS</span>
-        <h2>How you're wired.</h2>
-        <p class="os-body">Personality. Experience. Mindset. A shared manual for how you think and operate — so you, your team, and your AI stop guessing.</p>
-        <a href="human-os.html" class="os-link">
-          Explore Human OS <span aria-hidden="true">→</span>
-        </a>
+    <!-- ── 4b. Personality Types ── -->
+    <section class="section" id="personality">
+      <div class="section-head">
+        <span class="eyebrow">Personality Types</span>
+        <h2>The frameworks behind how I operate.</h2>
       </div>
 
-      <!-- ══ ILLUSTRATION: Layer rings (human accent) ══ -->
-      <svg class="illus illus-layers" viewBox="0 0 440 440" role="img" aria-label="Three sub-layers compound into Human OS">
-        <g transform="translate(220, 220)">
-          <circle r="190" fill="#2A5D58" fill-opacity="0.05"/>
-          <circle r="190" fill="none" stroke="#2A5D58" stroke-opacity="0.16" stroke-width="1"/>
-          <circle r="130" fill="#2A5D58" fill-opacity="0.11"/>
-          <circle r="130" fill="none" stroke="#2A5D58" stroke-opacity="0.24" stroke-width="1"/>
-          <circle r="72" fill="#2A5D58"/>
-          <text y="6" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="30" fill="#FAFAF8" letter-spacing="-0.8">01</text>
-          <text y="-92" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#2A5D58" letter-spacing="-0.6" opacity="0.6">02</text>
-          <text y="-152" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#2A5D58" letter-spacing="-0.6" opacity="0.4">03</text>
-          <text y="94" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#FAFAF8" letter-spacing="1.8" font-weight="500">PERSONALITY</text>
-          <text y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#2A5D58" letter-spacing="1.8" font-weight="500" opacity="0.7">EXPERIENCE</text>
-          <text y="210" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#2A5D58" letter-spacing="1.8" font-weight="500" opacity="0.55">MINDSET</text>
-        </g>
-      </svg>
+      <div class="trait-shell">
+        <input type="radio" name="trait-framework" id="trait-mbti" checked>
+        <input type="radio" name="trait-framework" id="trait-enneagram">
+        <input type="radio" name="trait-framework" id="trait-bg5">
+        <input type="radio" name="trait-framework" id="trait-hd">
+        <input type="radio" name="trait-framework" id="trait-um">
+        <div class="trait-switcher">
+          <label for="trait-mbti">MBTI</label>
+          <label for="trait-enneagram">Enneagram</label>
+          <label for="trait-bg5">BG5</label>
+          <label for="trait-hd">Human Design</label>
+          <label for="trait-um">Understand Myself</label>
+        </div>
+        <div class="trait-panels">
+
+          <!-- MBTI (default) -->
+          <article class="trait-panel panel-mbti">
+            <div class="trait-layout">
+              <div class="trait-side">
+                <div class="trait-meta">MBTI</div>
+                <div class="trait-type">ENTP-Turbulent</div>
+                <p class="trait-summary">Wired to challenge assumptions and find better ways to do things.</p>
+                <div class="trait-analysis">
+                  <details class="read-more">
+                    <summary><span class="more">Read analysis</span><span class="less">Hide analysis</span></summary>
+                    <div class="trait-details">
+                      <div class="trait-block">
+                        <div class="trait-block-label">What it means</div>
+                        <p>MBTI maps how people take in information and make decisions. ENTP describes someone energised by ideas, patterns, and exploration. Extraverted (64%), Intuitive (51%), Thinking (79%), Prospecting (68%). The Turbulent modifier adds a layer of internal self-scrutiny and sensitivity that does not always show on the surface.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">How it shows up in my work</div>
+                        <p>A natural drive to challenge assumptions, explore better ways of doing things, and connect ideas across domains. I am more interested in what could be built next than in maintaining what already exists. I think fast, see patterns early, and move toward innovation, strategy, and future-facing opportunity. I am comfortable going fast before the full picture is clear.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">Strengths it gives me</div>
+                        <p>Energy around change, experimentation, and new ideas. Comfort in ambiguity. A natural ability to reframe problems, generate alternative approaches, and keep momentum alive in situations where others slow down.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">Watch-outs</div>
+                        <p>Impatience with repetition. A pull toward what is new over what needs finishing. The Turbulent side creates internal pressure and self-scrutiny when something matters deeply, even when that is not visible from the outside.</p>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="trait-stats">
+                <div class="trait-stat"><div class="trait-stat-label">Extraverted</div><div class="trait-stat-value">64%</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Intuitive</div><div class="trait-stat-value">51%</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Thinking</div><div class="trait-stat-value">79%</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Prospecting</div><div class="trait-stat-value">68%</div></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Enneagram -->
+          <article class="trait-panel panel-enneagram">
+            <div class="trait-layout">
+              <div class="trait-side">
+                <div class="trait-meta">Enneagram</div>
+                <div class="trait-type">Type 7 with 8<br>SX/SO</div>
+                <p class="trait-summary">Driven by momentum, freedom, and the need to make something happen.</p>
+                <div class="trait-analysis">
+                  <details class="read-more">
+                    <summary><span class="more">Read analysis</span><span class="less">Hide analysis</span></summary>
+                    <div class="trait-details">
+                      <div class="trait-block">
+                        <div class="trait-block-label">What it means</div>
+                        <p>The Enneagram maps core motivation. Type 7 is driven by possibility, freedom, and the desire to avoid feeling trapped or limited. The 8 wing adds directness and a stronger instinct to take charge. SX/SO stacking intensifies everything; it creates a drive for deep engagement and a pull toward meaningful, visible impact.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">How it shows up in my work</div>
+                        <p>Strong forward-moving energy with intensity behind it. I am drawn to opportunity, momentum, and expansion, and I bring boldness and initiative into how I think and build. When things move, I thrive. When things stall, I look for a way to restart. The 8 wing means I am willing to push and create friction when that is what progress requires.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">Strengths it gives me</div>
+                        <p>Entrepreneurial energy, resilience, and the ability to create momentum in uncertain situations. Deep engagement with what matters. I hold many threads at once without becoming paralysed, and I keep energy alive where others slow down.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">Watch-outs</div>
+                        <p>Moving on too fast. The intensity of SX-first can overwhelm people or situations that need a softer approach. Chasing too many directions at once. The desire to stay stimulated can work against staying long enough to fully finish what I start.</p>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="trait-stats">
+                <div class="trait-stat"><div class="trait-stat-label">Core type</div><div class="trait-stat-value">7 — The Enthusiast</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Wing</div><div class="trait-stat-value">8 — The Challenger</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Instinct stack</div><div class="trait-stat-value">Sexual / Social</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Core drive</div><div class="trait-stat-value">Possibility &amp; freedom</div></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- BG5 -->
+          <article class="trait-panel panel-bg5">
+            <div class="trait-layout">
+              <div class="trait-side">
+                <div class="trait-meta">BG5</div>
+                <div class="trait-type">Express Builder</div>
+                <p class="trait-summary">Best when shaping ideas into something others can see and respond to.</p>
+                <div class="trait-analysis">
+                  <details class="read-more">
+                    <summary><span class="more">Read analysis</span><span class="less">Hide analysis</span></summary>
+                    <div class="trait-details">
+                      <div class="trait-block">
+                        <div class="trait-block-label">What it means</div>
+                        <p>BG5 is the business application of Human Design. The Express Builder is designed to create through energy, expression, and visible movement. The key principle is response over initiation; when there is something real to engage with, the energy is powerful and sustained. When forced to generate from nothing, it fades.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">How it shows up in my work</div>
+                        <p>I do my best work when I can take ideas, shape them into concepts, and move them toward something others can see, use, or respond to. Projects with visible momentum and real engagement go better than projects that start from pure planning without contact with reality. I create faster when I am responding to something real, not starting from a blank page.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">Strengths it gives me</div>
+                        <p>Visible creation, entrepreneurial movement, and a natural connection between energy and practical output. A strong bias toward making things real rather than keeping them abstract. Speed and sustained energy when the work has something tangible to respond to.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">Watch-outs</div>
+                        <p>Creating faster than I refine. Moving with so much energy that surrounding structures struggle to keep up. It can also be hard to sustain momentum on projects where the response trigger is missing or the direction is unclear.</p>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="trait-stats">
+                <div class="trait-stat"><div class="trait-stat-label">Career type</div><div class="trait-stat-value">Express Builder</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Decision mode</div><div class="trait-stat-value">Response over initiation</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Energy style</div><div class="trait-stat-value">Sustained &amp; multi-lane</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Assimilation</div><div class="trait-stat-value">Classic — scheduled intake</div></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Human Design -->
+          <article class="trait-panel panel-hd">
+            <div class="trait-layout">
+              <div class="trait-side">
+                <div class="trait-meta">Human Design</div>
+                <div class="trait-type">Manifesting Generator (2/4)</div>
+                <p class="trait-summary">Built to move fast across multiple lanes without needing a linear path.</p>
+                <div class="trait-analysis">
+                  <details class="read-more">
+                    <summary><span class="more">Read analysis</span><span class="less">Hide analysis</span></summary>
+                    <div class="trait-details">
+                      <div class="trait-block">
+                        <div class="trait-block-label">What it means</div>
+                        <p>Human Design maps how a person is designed to operate, make decisions, and interact with the world. A Manifesting Generator has both the capacity to initiate and the ability to build sustainably. Unlike pure Generators, they can skip steps, move faster, and work across multiple lanes at once. The 2/4 profile adds natural talent and a strong relational network.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">How it shows up in my work</div>
+                        <p>Strong creative energy, fast iteration, and a natural tendency to move between ideas, systems, and opportunities without needing a perfectly linear path. My four defined channels reflect this: Curiosity (the searcher), Charisma (awareness becoming action), Recognition (depth of feeling as fuel), and Synthesis (sensitivity to what a community needs). I build across multiple layers at once, often faster than the structures around me expect.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">Strengths it gives me</div>
+                        <p>Speed, adaptability, and the ability to carry energy across more territory than most. A natural instinct for finding shorter paths through complexity. The 2/4 profile means I attract the right people and opportunities through presence rather than pursuit.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">Watch-outs</div>
+                        <p>This kind of energy can look scattered from the outside if it is not grounded in clear structure and direction. The non-linear way I work can frustrate people or systems that expect straight-line progress. Speed without structure creates noise.</p>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="trait-stats">
+                <div class="trait-stat"><div class="trait-stat-label">Type</div><div class="trait-stat-value">Manifesting Generator</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Profile</div><div class="trait-stat-value">2/4 — Hermit / Opportunist</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Strategy</div><div class="trait-stat-value">Respond, then initiate</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Authority</div><div class="trait-stat-value">Sacral</div></div>
+              </div>
+            </div>
+          </article>
+
+          <!-- Understand Myself -->
+          <article class="trait-panel panel-um">
+            <div class="trait-layout">
+              <div class="trait-side">
+                <div class="trait-meta">Understand Myself</div>
+                <div class="trait-type">High openness,<br>high extraversion,<br>low agreeableness</div>
+                <p class="trait-summary">High originality, high intensity, low interest in consensus for its own sake.</p>
+                <div class="trait-analysis">
+                  <details class="read-more">
+                    <summary><span class="more">Read analysis</span><span class="less">Hide analysis</span></summary>
+                    <div class="trait-details">
+                      <div class="trait-block">
+                        <div class="trait-block-label">What it means</div>
+                        <p>Understand Myself is a trait-based psychological assessment built on the Big Five model. My profile shows very high openness (96) and extraversion (91), high conscientiousness (78), very low agreeableness (2), and moderate neuroticism (61). This points to someone who is idea-driven, outward-moving, intense, and comfortable thinking differently.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">How it shows up in my work</div>
+                        <p>A mix of creativity, strategic thinking, and intensity. High openness supports innovation and conceptual thinking. High extraversion supports communication, momentum, and outward-facing energy. High conscientiousness keeps me committed when the direction matters. Very low agreeableness means I will challenge weak reasoning and hold my position. That is a strength, but it can also come across harder than intended.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">Strengths it gives me</div>
+                        <p>Originality, initiative, vision, communication, and the willingness to think differently and move first. A natural comfort with going against consensus when the reasoning supports it. Strong creative and strategic output under pressure.</p>
+                      </div>
+                      <div class="trait-block">
+                        <div class="trait-block-label">Watch-outs</div>
+                        <p>High openness can become distraction. Low agreeableness can create relational friction when directness is not matched with enough context or care. Moderate neuroticism creates internal pressure and overthinking when the stakes feel personal, even when that is not visible externally.</p>
+                      </div>
+                    </div>
+                  </details>
+                </div>
+              </div>
+              <div class="trait-stats">
+                <div class="trait-stat"><div class="trait-stat-label">Openness</div><div class="trait-stat-value">96 / 100</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Extraversion</div><div class="trait-stat-value">91 / 100</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Conscientiousness</div><div class="trait-stat-value">78 / 100</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Agreeableness</div><div class="trait-stat-value">2 / 100</div></div>
+                <div class="trait-stat"><div class="trait-stat-label">Neuroticism</div><div class="trait-stat-value">61 / 100</div></div>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
     </section>
 
-    <!-- ── Image break 2 ─────────────────────────────────── -->
-    <div class="image-break fade-in">
-      <div class="image-quote">
-        <p>"Orgs don't have a real map of themselves either."</p>
-        <cite>&mdash; Business OS · the problem</cite>
+    <!-- Image break 3 -->
+    <div class="image-break">
+      <div class="image-quote image-quote-right">
+        <p>"We need diversity of thought in the world to face the new challenges."</p>
+        <cite>&mdash; Tim Berners-Lee</cite>
       </div>
-      <img src="assets/austria.jpg" alt="Mountain landscape" loading="lazy" />
+      <img src="assets/grass.jpg" alt="Grass landscape" loading="lazy" style="object-position: center 65%;" />
     </div>
 
-    <!-- ── Layer 02 · Business OS ──────────────────────────── -->
-    <section class="section os-section business fade-in">
-      <div class="os-copy">
-        <span class="os-layer-mark" aria-hidden="true">02</span>
-        <span class="eyebrow accent-business">Layer 02 · Business OS</span>
-        <h2>How your org runs.</h2>
-        <p class="os-body">Culture. Capabilities. Mission. The same framework, mapped to organizations — so companies can read their own wiring the way founders read a person.</p>
-        <a href="business-os.html" class="os-link">
-          Explore Business OS <span aria-hidden="true">→</span>
-        </a>
-      </div>
+    <!-- ── 5. My Experience ── -->
+    <section class="section" id="experience">
+      <div class="section-head"><span class="eyebrow">My Experience</span><h2>Shaped by doing, not by degrees.</h2></div>
+      <div class="story-stack">
 
-      <!-- ══ ILLUSTRATION: Layer rings (business accent) ══ -->
-      <svg class="illus illus-layers" viewBox="0 0 440 440" role="img" aria-label="Three sub-layers compound into Business OS">
-        <g transform="translate(220, 220)">
-          <circle r="190" fill="#8A4F3B" fill-opacity="0.05"/>
-          <circle r="190" fill="none" stroke="#8A4F3B" stroke-opacity="0.16" stroke-width="1"/>
-          <circle r="130" fill="#8A4F3B" fill-opacity="0.11"/>
-          <circle r="130" fill="none" stroke="#8A4F3B" stroke-opacity="0.24" stroke-width="1"/>
-          <circle r="72" fill="#8A4F3B"/>
-          <text y="6" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="30" fill="#FAFAF8" letter-spacing="-0.8">01</text>
-          <text y="-92" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#8A4F3B" letter-spacing="-0.6" opacity="0.6">02</text>
-          <text y="-152" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#8A4F3B" letter-spacing="-0.6" opacity="0.4">03</text>
-          <text y="94" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#FAFAF8" letter-spacing="1.8" font-weight="500">CULTURE</text>
-          <text y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8A4F3B" letter-spacing="1.8" font-weight="500" opacity="0.7">CAPABILITIES</text>
-          <text y="210" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8A4F3B" letter-spacing="1.8" font-weight="500" opacity="0.55">MISSION</text>
-        </g>
-      </svg>
+        <article class="experience-card">
+          <div class="experience-meta">
+            <h3>Founder</h3>
+            <div class="experience-years">2026 &mdash; Present</div>
+            <div class="experience-place">Human OS</div>
+          </div>
+          <div class="experience-copy">
+            <p>A framework that maps how you think and operate. Built to get teams on the same page and set the standard for how humans and AI work together.</p>
+            <div class="skills-line">Personal Development &middot; Human-Centric &middot; AI Collaboration &middot; Framework Design &middot; New Practice</div>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-meta">
+            <h3>AI Strategy &amp; Product Builder</h3>
+            <div class="experience-years">2026 &mdash; Present</div>
+            <div class="experience-place">KRING</div>
+          </div>
+          <div class="experience-copy">
+            <p>Contributing to KRING's AI-native Speedbooting platform and designing Speedblocks; ready-to-deploy operational packages that solve specific roadblocks ventures face.</p>
+            <div class="skills-line">Agentic AI &middot; Product Development &middot; Workflow Design &middot; Strategic Thinking &middot; Concept Development</div>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-meta">
+            <h3>Canteen Operations Manager</h3>
+            <div class="experience-years">2023 &mdash; 2026</div>
+            <div class="experience-place">Caf&eacute; Elmelund</div>
+          </div>
+          <div class="experience-copy">
+            <p>Led daily operations in a professional canteen environment, balancing service quality, team performance, and commercial control under pressure.</p>
+            <div class="skills-line">Operations Management &middot; Team Leadership &middot; Process Improvement &middot; Cost Control &middot; Service Operations</div>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-meta">
+            <h3>Career Break</h3>
+            <div class="experience-years">2021 &mdash; 2023</div>
+            <div class="experience-place">Health and well-being</div>
+          </div>
+          <div class="experience-copy">
+            <p>Intentional time to recover from burnout and rebuild physically, mentally, and personally. The foundation built here directly shapes how I work today.</p>
+            <div class="skills-line">Self-Leadership &middot; Resilience &middot; Personal Development &middot; Emotional Intelligence &middot; Self-Awareness</div>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-meta">
+            <h3>Commercial Development Manager</h3>
+            <div class="experience-years">2020 &mdash; 2021</div>
+            <div class="experience-place">Limitless Virtual Reality</div>
+          </div>
+          <div class="experience-copy">
+            <p>Built and launched new revenue initiatives in a lean startup environment, turning early concepts into operational offerings and new commercial paths.</p>
+            <div class="skills-line">Business Development &middot; Concept Development &middot; Go-to-Market Strategy &middot; Market Validation &middot; New Venture Development</div>
+          </div>
+        </article>
+
+        <article class="experience-card">
+          <div class="experience-meta">
+            <h3>General Manager (Flagship)</h3>
+            <div class="experience-years">2018 &mdash; 2021</div>
+            <div class="experience-place">Limitless Virtual Reality</div>
+          </div>
+          <div class="experience-copy">
+            <p>Full accountability for people, delivery, and commercial performance at Denmark's biggest VR venue, running a lean startup operation at scale.</p>
+            <div class="skills-line">Operations Management &middot; Team Leadership &middot; P&amp;L Management &middot; Process Improvement &middot; Customer Experience</div>
+          </div>
+        </article>
+
+      </div>
     </section>
 
-    <!-- ── Image break 3 ─────────────────────────────────── -->
-    <div class="image-break fade-in">
-      <div class="image-quote">
-        <p>"Generic AI is generic by design. Complement is engineered."</p>
-        <cite>&mdash; Agentic OS · the unlock</cite>
+    <!-- ── 6. Credentials ── -->
+    <section class="section" id="credentials">
+      <div class="section-head"><span class="eyebrow">Credentials</span><h2>What I've studied, and where.</h2></div>
+      <div class="credentials-grid">
+        <div class="credentials-column">
+          <span class="eyebrow">Certificates</span>
+          <div class="credentials-list">
+            <div class="credential-row"><span class="item-no">01</span><div><div>Generative AI in Business</div><div class="credential-school">University of Michigan</div></div></div>
+            <div class="credential-row"><span class="item-no">02</span><div><div>AI For Business Specialization</div><div class="credential-school">The Wharton School</div></div></div>
+            <div class="credential-row"><span class="item-no">03</span><div><div>Generative AI Leadership &amp; Strategy Specialization</div><div class="credential-school">Vanderbilt University</div></div></div>
+            <div class="credential-row"><span class="item-no">04</span><div><div>Prompt Engineering Specialization</div><div class="credential-school">Vanderbilt University</div></div></div>
+            <div class="credential-row"><span class="item-no">05</span><div><div>Pretotyping</div><div class="credential-school">pree.to</div></div></div>
+          </div>
+        </div>
+        <div class="credentials-column">
+          <span class="eyebrow">Schools</span>
+          <div class="credentials-list">
+            <div class="credential-row"><span class="item-no">01</span><div><div>Rudolf Steiner Skolen i K&oslash;benhavn</div><div class="credential-school">Creativity-focused education rooted in holistic thinking and self-expression</div></div></div>
+            <div class="credential-row"><span class="item-no">02</span><div><div>H&oslash;ng Efterskole</div><div class="credential-school">Boarding school focused on a global perspective and independence</div></div></div>
+            <div class="credential-row"><span class="item-no">03</span><div><div>Next K&oslash;benhavn</div><div class="credential-school">Commercial and business-focused 10th grade education</div></div></div>
+          </div>
+        </div>
       </div>
-      <img src="assets/road.jpg" alt="Road through the landscape" loading="lazy" />
+    </section>
+
+    <!-- Image break 2 -->
+    <div class="image-break">
+      <div class="image-quote image-quote-narrow">
+        <p>"The best way to predict the future is to co-create it."</p>
+      </div>
+      <img src="assets/austria.jpg" alt="Aerial forest landscape with road" loading="lazy" />
     </div>
 
-    <!-- ── Layer 03 · Agentic OS ──────────────────────────── -->
-    <section class="section os-section agentic fade-in">
-      <div class="os-copy">
-        <span class="os-layer-mark" aria-hidden="true">03</span>
-        <span class="eyebrow accent-agentic">Layer 03 · Agentic OS</span>
-        <h2>How your AI complements.</h2>
-        <p class="os-body">AI agents with designed personalities, built to balance the human — not mirror them. If you're wired one way, your agent is engineered opposite.</p>
-        <a href="agentic-os.html" class="os-link">
-          Explore Agentic OS <span aria-hidden="true">→</span>
-        </a>
-      </div>
-
-      <!-- ══ ILLUSTRATION: Layer rings (agentic accent) ══ -->
-      <svg class="illus illus-layers" viewBox="0 0 440 440" role="img" aria-label="Three sub-layers compound into Agentic OS">
-        <g transform="translate(220, 220)">
-          <circle r="190" fill="#3D5A7D" fill-opacity="0.05"/>
-          <circle r="190" fill="none" stroke="#3D5A7D" stroke-opacity="0.16" stroke-width="1"/>
-          <circle r="130" fill="#3D5A7D" fill-opacity="0.11"/>
-          <circle r="130" fill="none" stroke="#3D5A7D" stroke-opacity="0.24" stroke-width="1"/>
-          <circle r="72" fill="#3D5A7D"/>
-          <text y="6" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="30" fill="#FAFAF8" letter-spacing="-0.8">01</text>
-          <text y="-92" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#3D5A7D" letter-spacing="-0.6" opacity="0.6">02</text>
-          <text y="-152" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#3D5A7D" letter-spacing="-0.6" opacity="0.4">03</text>
-          <text y="94" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#FAFAF8" letter-spacing="1.8" font-weight="500">PERSONALITY</text>
-          <text y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#3D5A7D" letter-spacing="1.8" font-weight="500" opacity="0.7">EXPERIENCE</text>
-          <text y="210" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#3D5A7D" letter-spacing="1.8" font-weight="500" opacity="0.55">MINDSET</text>
-        </g>
-      </svg>
-    </section>
-
-    <!-- ── The unlock / compound visual + text ─────────────── -->
-    <section class="section fade-in">
-      <div class="section-head section-head-wide">
-        <span class="eyebrow">Why it compounds</span>
-        <h2>Each layer sharpens the others.</h2>
-        <p>The real leverage isn't any one OS — it's that humans, organizations, and AI agents get mapped against the same framework. For the first time the wiring of all three can be compared, paired, and composed.</p>
-      </div>
-
-      <!-- ══ ILLUSTRATION: Three-way compound Venn ══ -->
-      <svg class="illus illus-flow3" viewBox="0 0 720 380" role="img" aria-label="Three layers overlap into a shared operating language">
-        <g>
-          <circle cx="230" cy="210" r="145" fill="#2A5D58" fill-opacity="0.22"/>
-          <circle cx="360" cy="210" r="145" fill="#8A4F3B" fill-opacity="0.22"/>
-          <circle cx="490" cy="210" r="145" fill="#3D5A7D" fill-opacity="0.22"/>
-        </g>
-        <circle cx="360" cy="210" r="22" fill="#1B3D3A"/>
-        <text x="360" y="215" text-anchor="middle" font-family="Outfit, sans-serif" font-size="14" font-weight="700" fill="#FAFAF8" letter-spacing="-0.3">NPM</text>
-
-        <text x="230" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#2A5D58" letter-spacing="1.8" font-weight="500">HUMAN</text>
-        <text x="360" y="46" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A4F3B" letter-spacing="1.8" font-weight="500">BUSINESS</text>
-        <text x="490" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#3D5A7D" letter-spacing="1.8" font-weight="500">AGENTIC</text>
-
-        <text x="360" y="358" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="650" font-size="17" fill="#1B3D3A" letter-spacing="-0.3">Shared operating language</text>
-      </svg>
-
-      <div class="process-flow">
-        <div class="process-step">
-          <span class="step-num">01</span>
-          <h4>Self-awareness scales</h4>
-          <p>A person reads their own Human OS. An org reads its Business OS. An AI agent is built on an Agentic OS. Each one stops performing and starts operating.</p>
+    <!-- ── 7. My Story ── -->
+    <section class="section" id="story">
+      <div class="history-layout">
+        <div class="history-side">
+          <span class="eyebrow">My Story</span>
+          <h2>How I got here.</h2>
         </div>
-        <div class="process-step">
-          <span class="step-num">02</span>
-          <h4>Pairs become designable</h4>
-          <p>If a human is wired one way, their complement agent is engineered opposite. If an org is wired one way, the people it needs become obvious. Fit is no longer a guess.</p>
-        </div>
-        <div class="process-step">
-          <span class="step-num">03</span>
-          <h4>Alignment compounds</h4>
-          <p>The three layers stop operating on different vocabularies. Humans, orgs, and AI start reading the same map — and the map sharpens every time someone uses it.</p>
+        <div class="timeline">
+
+          <article class="timeline-item">
+            <div class="timeline-year">Early years</div>
+            <div class="timeline-copy">
+              <h4>My dad was always creating.</h4>
+              <p>My parents split before I was born. Grew up in Slagelse. At six, my dad and uncle moved to Copenhagen to start a business. My mom and I followed. Ideas, ventures, futuristic goals. That was home. My dad later met my stepmother, and I got two younger sisters. I did not know the word entrepreneur yet. I just thought that was how everyone lived.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-year">School years</div>
+            <div class="timeline-copy">
+              <h4>The classroom never had a chance.</h4>
+              <p>Started at Rudolf Steiner, a creativity-focused school that fit how I think. By the later years I was writing papers on exponential technological change and market validation while building a business with a friend after school. We got far. Never launched. Boarding school in 9th grade was about personal growth, not grades. Then Niels Brock Innovationsgymnasium. Three months in, the school fatigue won. I sat in class building another business. Never launched either. I could not stop creating. School was never going to be the place for it.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-year">Limitless VR</div>
+            <div class="timeline-copy">
+              <h4>Someone finally let me loose.</h4>
+              <p>Full-time at Limitless VR. Floor to assistant manager to manager, fast. Team of fifteen. Denmark's biggest VR venue. Then they let me build. Loyalty programmes. B2B rental. Event concepts. Real projects that shipped and made money. First time something I created hit the real world and worked. That confirmed it. Execution is how I learn. Get me close to something real and let me figure it out.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-year">Burnout</div>
+            <div class="timeline-copy">
+              <h4>The bill came due.</h4>
+              <p>No structure at work. None in my personal life. Too much on my shoulders, and things from my upbringing I had never dealt with. It ended in a burnout that took two years. I moved to Faaborg to be close to family.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-year">Rebuild</div>
+            <div class="timeline-copy">
+              <h4>Rebuilt from the studs.</h4>
+              <p>Those two years taught me more than everything before. I learned my limits for real. Rebuilt physically, mentally, personally, spiritually. Mindset became a daily practice. My faith deepened. I got back to work in a structured environment and earned responsibility again. This time with ground underneath me. And a clarity that stability alone would never be enough.</p>
+            </div>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-year">Today</div>
+            <div class="timeline-copy">
+              <h4>The pull to build came back.</h4>
+              <p>The need to create returned. Clearer than before. KRING, the family business, was restructuring and building a new AI-native platform with venture solutions across different concepts. Something clicked. AI is not about productivity. It is about how we think, work, and create value together. That is what I am building now.</p>
+            </div>
+          </article>
+
         </div>
       </div>
     </section>
 
-    <!-- ── CO-CREATE (you + AI build your OS together) ───── -->
-    <section class="section fade-in">
-      <div class="section-head section-head-wide">
-        <span class="eyebrow">Co-created, not consumed</span>
-        <h2>You and the AI build your OS together.</h2>
-        <p>NPM isn't something you read off a shelf. It's something you co-create — with an AI that knows the framework, asks the right questions, and writes your profile with you. You bring the story. The AI brings the structure. You walk out with a living map you own.</p>
-      </div>
-
-      <!-- ══ ILLUSTRATION: Co-create scene ══ -->
-      <svg class="illus illus-cocreate" viewBox="0 0 820 400" role="img" aria-label="You, AI, and your emerging OS in a co-creation loop">
-        <defs>
-          <marker id="arr-pet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0,0 L10,5 L0,10 Z" fill="#2A5D58"/>
-          </marker>
-          <marker id="arr-ter" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
-            <path d="M0,0 L10,5 L0,10 Z" fill="#8A4F3B"/>
-          </marker>
-        </defs>
-
-        <!-- Human figure (YOU) -->
-        <g transform="translate(140, 180)">
-          <circle cx="0" cy="-52" r="28" fill="#2A5D58"/>
-          <path d="M -46 46 Q 0 -10 46 46 L 46 86 L -46 86 Z" fill="#2A5D58"/>
-          <text x="0" y="130" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#2A5D58" letter-spacing="1.8" font-weight="500">YOU</text>
-          <text x="0" y="150" text-anchor="middle" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#1A1918" letter-spacing="-0.2">Show up honest</text>
-        </g>
-
-        <!-- Arrow YOU → AI -->
-        <path d="M 215 180 Q 280 180 330 180" fill="none" stroke="#2A5D58" stroke-width="1.5" stroke-linecap="round" opacity="0.55" marker-end="url(#arr-pet)"/>
-
-        <!-- AI glyph -->
-        <g transform="translate(410, 180)">
-          <circle r="76" fill="none" stroke="#1A1918" stroke-opacity="0.12" stroke-width="1"/>
-          <circle r="54" fill="none" stroke="#1A1918" stroke-opacity="0.22" stroke-width="1"/>
-          <circle r="34" fill="#1A1918"/>
-          <!-- 4-point sparkle -->
-          <path d="M 0 -16 C 2 -6 6 -2 16 0 C 6 2 2 6 0 16 C -2 6 -6 2 -16 0 C -6 -2 -2 -6 0 -16 Z" fill="#FAFAF8"/>
-          <text x="0" y="130" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#54504C" letter-spacing="1.8" font-weight="500">AI · CO-AUTHOR</text>
-          <text x="0" y="150" text-anchor="middle" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#1A1918" letter-spacing="-0.2">Asks, listens, drafts</text>
-        </g>
-
-        <!-- Arrow AI → DOC -->
-        <path d="M 490 180 Q 550 180 600 180" fill="none" stroke="#8A4F3B" stroke-width="1.5" stroke-linecap="round" opacity="0.55" marker-end="url(#arr-ter)"/>
-
-        <!-- Document (your OS) -->
-        <g transform="translate(680, 180)">
-          <!-- back paper -->
-          <rect x="-42" y="-58" width="88" height="112" rx="3" fill="#F5E4D6"/>
-          <!-- front paper -->
-          <rect x="-50" y="-66" width="88" height="112" rx="3" fill="#FAFAF8" stroke="#1A1918" stroke-width="1.3"/>
-          <!-- top strong line (title) -->
-          <rect x="-42" y="-55" width="68" height="4" rx="1" fill="#2A5D58"/>
-          <rect x="-42" y="-44" width="42" height="2" rx="1" fill="#54504C" opacity="0.5"/>
-          <!-- body lines -->
-          <rect x="-42" y="-28" width="72" height="2" rx="1" fill="#54504C" opacity="0.5"/>
-          <rect x="-42" y="-20" width="56" height="2" rx="1" fill="#54504C" opacity="0.5"/>
-          <rect x="-42" y="-12" width="64" height="2" rx="1" fill="#54504C" opacity="0.5"/>
-          <rect x="-42" y="2" width="72" height="2" rx="1" fill="#54504C" opacity="0.5"/>
-          <rect x="-42" y="10" width="40" height="2" rx="1" fill="#54504C" opacity="0.5"/>
-          <rect x="-42" y="18" width="60" height="2" rx="1" fill="#54504C" opacity="0.5"/>
-          <rect x="-42" y="26" width="54" height="2" rx="1" fill="#54504C" opacity="0.5"/>
-          <!-- corner stamp -->
-          <circle cx="-30" cy="40" r="6" fill="#2A5D58"/>
-          <text x="0" y="130" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#2A5D58" letter-spacing="1.8" font-weight="500">YOUR OS</text>
-          <text x="0" y="150" text-anchor="middle" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#1A1918" letter-spacing="-0.2">Emerges, alive</text>
-        </g>
-
-        <!-- Iteration loop: DOC → YOU (bottom curve) -->
-        <path d="M 680 260 Q 680 340 410 340 Q 140 340 80 280" fill="none" stroke="#2A5D58" stroke-width="1.5" stroke-linecap="round" opacity="0.5" marker-end="url(#arr-pet)"/>
-        <text x="410" y="378" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#858079" letter-spacing="2" font-weight="500">ITERATE · YOU CHANGE, YOUR OS CHANGES</text>
-      </svg>
-    </section>
-
-    <!-- ── Use cases ──────────────────────────────────────── -->
-    <section class="section fade-in">
-      <div class="section-head">
-        <span class="eyebrow">Where it lands</span>
-        <h2>Where it's already earning its keep.</h2>
-        <p>Used inside ventures and teams to turn fuzzy human judgment into structured, reusable signal.</p>
-      </div>
-
-      <div class="use-cases">
-        <div class="use-case">
-          <span class="uc-num">Use case 01</span>
-          <h4>Team formation</h4>
-          <p>Forming founding teams from complementary wirings — not overlapping strengths. The first five either compound each other or quietly collide; NPM makes which one visible before the cap table is signed.</p>
+    <!-- ── 8. Contact ── -->
+    <section class="section section-contact" id="contact">
+      <div class="cta-shell">
+        <div class="contact">
+          <span class="eyebrow">Let's Connect</span>
+          <h2>If this resonates, reach out.</h2>
+          <div class="contact-links">
+            <a class="contact-link" href="https://www.linkedin.com/in/augustkring/" target="_blank" rel="noreferrer">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
+              LinkedIn
+            </a>
+            <a class="contact-link" href="mailto:ak@augustkring.com">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"/></svg>
+              ak@augustkring.com
+            </a>
+            <a class="contact-link" href="tel:+4529132261">
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+              +45 29 13 22 61
+            </a>
+            <a class="contact-link download-link" href="august-kring-human-os.md" download>
+              <svg aria-hidden="true" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+              Download Human OS File
+            </a>
+          </div>
         </div>
-        <div class="use-case">
-          <span class="uc-num">Use case 02</span>
-          <h4>Co-founder alignment</h4>
-          <p>Surfacing friction points before they break the partnership. Two Human OS profiles read side by side say more than months of "founder compatibility" coffee.</p>
+        <div class="cta-photo">
+          <img src="assets/august_profile.jpg" alt="August Kring" loading="lazy" />
         </div>
-        <div class="use-case">
-          <span class="uc-num">Use case 03</span>
-          <h4>Personal development</h4>
-          <p>Knowing where you thrive, where you break, and where the next edge of growth actually lives. The framework stops being an HR exercise and starts being a practice.</p>
+      </div>
+      <div class="compare-teaser">
+        <div class="compare-teaser-inner">
+          <h3>Understand how we fit together.</h3>
+          <p>Download my Human OS file and share it with any AI. By answering a built-in questionnaire about yourself, it can map how we align — personally and professionally. Your answers stay with you. No accounts, no data sharing, just insight.</p>
         </div>
       </div>
     </section>
-
-    <!-- ── Final CTA — co-create your layer ──────────────── -->
-    <section id="start" class="section fade-in">
-      <div class="cta-final">
-        <div class="cta-head">
-          <span class="eyebrow">Co-create yours</span>
-          <h2>Pick a layer. Build it with AI.</h2>
-          <p>Every path runs self-serve with an AI that knows the framework. No calls booked. No consultants. You, the AI, and a living OS at the end of it.</p>
-        </div>
-
-        <div class="cta-actions">
-          <a href="human-os.html#build">
-            <span>Co-create your Human OS</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="business-os.html#map">
-            <span>Co-create your Business OS</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </a>
-          <a href="agentic-os.html#agent">
-            <span>Generate your complement agent</span>
-            <span class="arrow" aria-hidden="true">→</span>
-          </a>
-        </div>
-      </div>
-    </section>
-
-    <!-- ── Footer ─────────────────────────────────────────── -->
-    <footer class="site-footer">
-      <div class="footer-grid">
-        <div class="footer-brand">
-          <span class="brand">
-            <span class="brand-dot"></span>
-            <span>NPM</span>
-          </span>
-          <p>The New Practice Mindset. An open framework for humans, organizations, and AI to work as one.</p>
-        </div>
-
-        <div class="footer-col">
-          <h5>Layers</h5>
-          <ul>
-            <li><a href="human-os.html">Human OS</a></li>
-            <li><a href="business-os.html">Business OS</a></li>
-            <li><a href="agentic-os.html">Agentic OS</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Co-create</h5>
-          <ul>
-            <li><a href="human-os.html#build">Your Human OS</a></li>
-            <li><a href="business-os.html#map">Your Business OS</a></li>
-            <li><a href="agentic-os.html#agent">Complement agent</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>About</h5>
-          <ul>
-            <li><a href="https://augustkring.com" target="_blank" rel="noopener">August Kring</a></li>
-            <li><a href="https://www.linkedin.com/in/augustkring/" target="_blank" rel="noopener">LinkedIn</a></li>
-            <li><a href="mailto:ak@augustkring.com">Email</a></li>
-          </ul>
-        </div>
-      </div>
-
-      <div class="footer-meta">
-        <span>© 2026 · Open framework · Share it</span>
-        <span>v0.4 mockup</span>
-      </div>
-    </footer>
 
   </main>
 
-  <script src="assets/shared.js"></script>
+  <!-- ── Footer ── -->
+  <footer class="site-footer">
+    <div class="page">
+      <div class="footer-shell">
+        <p>&copy; 2026 August Kring. All rights reserved.</p>
+        <p>Human OS</p>
+      </div>
+    </div>
+  </footer>
+
 </body>
 </html>

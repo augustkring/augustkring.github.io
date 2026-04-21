@@ -1,23 +1,548 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>August Kring</title>
-  <style>
-    html, body { margin: 0; height: 100%; background: #0b0b0b; color: #eee;
-      font: 16px/1.5 ui-sans-serif, system-ui, -apple-system, sans-serif; }
-    main { max-width: 40rem; margin: 0 auto; padding: 4rem 1.5rem; }
-    h1 { font-weight: 600; letter-spacing: -0.02em; margin: 0 0 .5rem; }
-    p { color: #bbb; margin: .75rem 0; }
-    a { color: #eee; }
-  </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The New Practice Mindset · NPM</title>
+  <meta name="description" content="Humans, organizations, AI — one operating language. Co-created with AI, legible to everyone.">
+  <meta property="og:title" content="The New Practice Mindset">
+  <meta property="og:description" content="Humans, organizations, AI — one operating language.">
+  <meta property="og:type" content="website">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◉</text></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@900&family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="assets/styles.css">
 </head>
 <body>
-  <main>
-    <h1>August Kring</h1>
-    <p>Site coming soon.</p>
-    <p><a href="https://github.com/augustkring">github.com/augustkring</a></p>
+
+  <!-- ── Header ─────────────────────────────────────────────── -->
+  <div class="header-wrap">
+    <header class="site-header">
+      <a href="index.html" class="brand" aria-label="NPM home">
+        <span class="brand-dot"></span>
+        <span>NPM</span>
+        <span class="brand-sub">The New Practice Mindset</span>
+      </a>
+
+      <input type="checkbox" id="menu-toggle" class="menu-toggle" aria-label="Toggle menu" />
+      <label for="menu-toggle" class="menu-btn" aria-hidden="true"><span></span></label>
+
+      <nav class="nav" aria-label="Primary">
+        <a href="human-os.html">Human&nbsp;OS</a>
+        <a href="business-os.html">Business&nbsp;OS</a>
+        <a href="agentic-os.html">Agentic&nbsp;OS</a>
+        <a href="#start" class="btn btn-ghost" style="min-height: 40px; padding: 0 18px; font-size: 14px;">Co-create yours</a>
+      </nav>
+
+      <div class="mobile-nav" role="menu">
+        <a href="human-os.html">Human OS</a>
+        <a href="business-os.html">Business OS</a>
+        <a href="agentic-os.html">Agentic OS</a>
+        <a href="#start">Co-create yours</a>
+        <span class="nav-meta">NPM · v0.4 mockup</span>
+      </div>
+    </header>
+  </div>
+
+  <main class="page">
+
+    <!-- ── Hero ────────────────────────────────────────────── -->
+    <section class="section hero fade-in">
+      <div class="hero-copy">
+        <span class="eyebrow">The New Practice Mindset</span>
+        <h1>Humans, organizations, AI&nbsp;— one operating language.</h1>
+        <p class="deck">Output is cheap. Alignment is scarce. NPM is the shared map — co-created with AI, read by everyone.</p>
+
+        <div class="hero-cta-row">
+          <a href="#start" class="btn btn-primary">Co-create your OS
+            <span class="arr" aria-hidden="true">→</span>
+          </a>
+          <a href="#how" class="btn-link">See how it works <span class="arr" aria-hidden="true">↓</span></a>
+        </div>
+
+        <div class="hero-meta">
+          <span class="dot"></span>
+          <span>Open framework · Built with AI, not despite it</span>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <!-- ══ ILLUSTRATION: Triad ══ -->
+        <svg class="illus illus-triad" viewBox="0 0 560 520" role="img" aria-label="Three OS layers compound into NPM">
+          <defs>
+            <radialGradient id="t-hum" cx="50%" cy="32%" r="68%">
+              <stop offset="0%" stop-color="#3E7E79"/>
+              <stop offset="100%" stop-color="#2A5D58"/>
+            </radialGradient>
+            <radialGradient id="t-biz" cx="50%" cy="32%" r="68%">
+              <stop offset="0%" stop-color="#A5644E"/>
+              <stop offset="100%" stop-color="#8A4F3B"/>
+            </radialGradient>
+            <radialGradient id="t-agt" cx="50%" cy="32%" r="68%">
+              <stop offset="0%" stop-color="#5B779B"/>
+              <stop offset="100%" stop-color="#3D5A7D"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Curved connectors (part of composition, not dividers) -->
+          <g fill="none" stroke-linecap="round" opacity="0.28">
+            <path d="M 248 156 Q 160 240 150 322" stroke="#2A5D58" stroke-width="1.8"/>
+            <path d="M 205 370 Q 280 400 355 370" stroke="#54504C" stroke-width="1.8"/>
+            <path d="M 410 322 Q 400 240 312 156" stroke="#3D5A7D" stroke-width="1.8"/>
+          </g>
+
+          <!-- Center compound dot -->
+          <circle cx="280" cy="262" r="5" fill="#1B3D3A"/>
+          <circle cx="280" cy="262" r="14" fill="none" stroke="#2A5D58" stroke-width="1" opacity="0.3"/>
+
+          <!-- Human node -->
+          <a href="human-os.html">
+            <g transform="translate(280, 110)">
+              <circle r="68" fill="url(#t-hum)"/>
+              <circle cx="0" cy="-16" r="10" fill="#FAFAF8"/>
+              <path d="M -20 12 Q 0 -8 20 12 L 20 28 L -20 28 Z" fill="#FAFAF8"/>
+            </g>
+            <text x="280" y="212" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#2A5D58" letter-spacing="1.6" font-weight="500">LAYER 01</text>
+            <text x="280" y="232" text-anchor="middle" font-family="Outfit, sans-serif" font-size="19" font-weight="700" fill="#1A1918" letter-spacing="-0.4">Human OS</text>
+          </a>
+
+          <!-- Business node -->
+          <a href="business-os.html">
+            <g transform="translate(140, 360)">
+              <circle r="68" fill="url(#t-biz)"/>
+              <rect x="-24" y="-20" width="14" height="40" rx="1.5" fill="#FAFAF8"/>
+              <rect x="-5" y="-12" width="14" height="32" rx="1.5" fill="#FAFAF8"/>
+              <rect x="14" y="-4" width="14" height="24" rx="1.5" fill="#FAFAF8"/>
+            </g>
+            <text x="140" y="462" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A4F3B" letter-spacing="1.6" font-weight="500">LAYER 02</text>
+            <text x="140" y="482" text-anchor="middle" font-family="Outfit, sans-serif" font-size="19" font-weight="700" fill="#1A1918" letter-spacing="-0.4">Business OS</text>
+          </a>
+
+          <!-- Agentic node -->
+          <a href="agentic-os.html">
+            <g transform="translate(420, 360)">
+              <circle r="68" fill="url(#t-agt)"/>
+              <path d="M 0 -24 L 24 0 L 0 24 L -24 0 Z" fill="#FAFAF8"/>
+              <circle cx="0" cy="0" r="4" fill="#3D5A7D"/>
+            </g>
+            <text x="420" y="462" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#3D5A7D" letter-spacing="1.6" font-weight="500">LAYER 03</text>
+            <text x="420" y="482" text-anchor="middle" font-family="Outfit, sans-serif" font-size="19" font-weight="700" fill="#1A1918" letter-spacing="-0.4">Agentic OS</text>
+          </a>
+
+          <!-- Center label -->
+          <text x="280" y="292" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#858079" letter-spacing="2" font-weight="500">COMPOUNDED BY</text>
+          <text x="280" y="314" text-anchor="middle" font-family="Outfit, sans-serif" font-size="24" font-weight="800" fill="#1B3D3A" letter-spacing="-0.6">NPM</text>
+        </svg>
+      </div>
+    </section>
+
+    <!-- ── OUTCOME (what changes when this exists) ───────── -->
+    <section class="section fade-in">
+      <div class="section-head">
+        <span class="eyebrow">The outcome</span>
+        <h2>What changes when all three layers speak the same language.</h2>
+        <p>Impact comes first. Before any framework is worth installing, it has to change something real about how humans, organizations, and AI actually operate together.</p>
+      </div>
+
+      <div class="outcome-grid">
+        <div class="outcome-item">
+          <div class="outcome-from">
+            <span class="before">Guessing</span>
+            <span class="to-arrow" aria-hidden="true">→</span>
+            <span class="after">Reading</span>
+          </div>
+          <h3>Fit becomes legible.</h3>
+          <p>The wiring of a person, an organization, and an AI agent gets mapped on the same framework — so "does this person fit this role" stops being an instinct and starts being a read.</p>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-from">
+            <span class="before">Performing</span>
+            <span class="to-arrow" aria-hidden="true">→</span>
+            <span class="after">Operating</span>
+          </div>
+          <h3>People stop selling themselves.</h3>
+          <p>When you have a shared manual for how you actually work, the interview game breaks. Résumés compress. Partnerships shortcut the months of surface-level dance.</p>
+        </div>
+        <div class="outcome-item">
+          <div class="outcome-from">
+            <span class="before">Generic AI</span>
+            <span class="to-arrow" aria-hidden="true">→</span>
+            <span class="after">Your AI</span>
+          </div>
+          <h3>AI gets the context automatically.</h3>
+          <p>Every agent in your life or your org runs on the same operating language you do. No more pasting your story into every new prompt. No more losing the thread every session.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Image break 1 ─────────────────────────────────── -->
+    <div class="image-break fade-in">
+      <div class="image-quote">
+        <p>"The three layers stop operating on different vocabularies."</p>
+        <cite>&mdash; NPM · the unlock</cite>
+      </div>
+      <img src="assets/forest.jpg" alt="Forest canopy" loading="lazy" />
+    </div>
+
+    <!-- ── PAIN (what breaks today) ────────────────────────── -->
+    <section class="section fade-in">
+      <div class="section-head">
+        <span class="eyebrow">The pain</span>
+        <h2>Right now, everyone is guessing at everyone else.</h2>
+        <p>The cost of misalignment isn't theoretical. It shows up in hires that don't work, partnerships that crack, founders who burn out, and AI that forgets who you are every time you open a new tab.</p>
+      </div>
+
+      <div class="numbered-grid">
+        <div class="numbered-item">
+          <h3>People are invisible to each other</h3>
+          <p>Résumés describe jobs, not wiring. New hires spend six months decoding the culture. Co-founders discover they work nothing alike — after the cap table is signed.</p>
+        </div>
+        <div class="numbered-item">
+          <h3>Organizations are invisible to themselves</h3>
+          <p>The real wiring lives in founders' heads, in fragments of decks, in unwritten rules only old-timers know. The pitch is clean. The operation is a rumor.</p>
+        </div>
+        <div class="numbered-item">
+          <h3>AI is invisible by default</h3>
+          <p>Generic agents mirror the user — agree more, smooth edges, flatter. Useful for tasks. A disaster for judgment. And the context resets every session.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── HOW IT WORKS — intro ───────────────────────────── -->
+    <section id="how" class="section fade-in">
+      <div class="section-head section-head-wide">
+        <span class="eyebrow">How it works</span>
+        <h2>One framework. Three layers. One language.</h2>
+        <p>Each layer makes the invisible wiring of a person, an organization, or an AI agent legible. Read them in order. Each one stands alone. Together, they compound into a shared operating language across the three.</p>
+      </div>
+    </section>
+
+    <!-- ── Layer 01 · Human OS ─────────────────────────────── -->
+    <section class="section os-section human fade-in">
+      <div class="os-copy">
+        <span class="os-layer-mark" aria-hidden="true">01</span>
+        <span class="eyebrow">Layer 01 · Human OS</span>
+        <h2>How you're wired.</h2>
+        <p class="os-body">Personality. Experience. Mindset. A shared manual for how you think and operate — so you, your team, and your AI stop guessing.</p>
+        <a href="human-os.html" class="os-link">
+          Explore Human OS <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- ══ ILLUSTRATION: Layer rings (human accent) ══ -->
+      <svg class="illus illus-layers" viewBox="0 0 440 440" role="img" aria-label="Three sub-layers compound into Human OS">
+        <g transform="translate(220, 220)">
+          <circle r="190" fill="#2A5D58" fill-opacity="0.05"/>
+          <circle r="190" fill="none" stroke="#2A5D58" stroke-opacity="0.16" stroke-width="1"/>
+          <circle r="130" fill="#2A5D58" fill-opacity="0.11"/>
+          <circle r="130" fill="none" stroke="#2A5D58" stroke-opacity="0.24" stroke-width="1"/>
+          <circle r="72" fill="#2A5D58"/>
+          <text y="6" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="30" fill="#FAFAF8" letter-spacing="-0.8">01</text>
+          <text y="-92" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#2A5D58" letter-spacing="-0.6" opacity="0.6">02</text>
+          <text y="-152" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#2A5D58" letter-spacing="-0.6" opacity="0.4">03</text>
+          <text y="94" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#FAFAF8" letter-spacing="1.8" font-weight="500">PERSONALITY</text>
+          <text y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#2A5D58" letter-spacing="1.8" font-weight="500" opacity="0.7">EXPERIENCE</text>
+          <text y="210" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#2A5D58" letter-spacing="1.8" font-weight="500" opacity="0.55">MINDSET</text>
+        </g>
+      </svg>
+    </section>
+
+    <!-- ── Image break 2 ─────────────────────────────────── -->
+    <div class="image-break fade-in">
+      <div class="image-quote">
+        <p>"Orgs don't have a real map of themselves either."</p>
+        <cite>&mdash; Business OS · the problem</cite>
+      </div>
+      <img src="assets/austria.jpg" alt="Mountain landscape" loading="lazy" />
+    </div>
+
+    <!-- ── Layer 02 · Business OS ──────────────────────────── -->
+    <section class="section os-section business fade-in">
+      <div class="os-copy">
+        <span class="os-layer-mark" aria-hidden="true">02</span>
+        <span class="eyebrow accent-business">Layer 02 · Business OS</span>
+        <h2>How your org runs.</h2>
+        <p class="os-body">Culture. Capabilities. Mission. The same framework, mapped to organizations — so companies can read their own wiring the way founders read a person.</p>
+        <a href="business-os.html" class="os-link">
+          Explore Business OS <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- ══ ILLUSTRATION: Layer rings (business accent) ══ -->
+      <svg class="illus illus-layers" viewBox="0 0 440 440" role="img" aria-label="Three sub-layers compound into Business OS">
+        <g transform="translate(220, 220)">
+          <circle r="190" fill="#8A4F3B" fill-opacity="0.05"/>
+          <circle r="190" fill="none" stroke="#8A4F3B" stroke-opacity="0.16" stroke-width="1"/>
+          <circle r="130" fill="#8A4F3B" fill-opacity="0.11"/>
+          <circle r="130" fill="none" stroke="#8A4F3B" stroke-opacity="0.24" stroke-width="1"/>
+          <circle r="72" fill="#8A4F3B"/>
+          <text y="6" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="30" fill="#FAFAF8" letter-spacing="-0.8">01</text>
+          <text y="-92" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#8A4F3B" letter-spacing="-0.6" opacity="0.6">02</text>
+          <text y="-152" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#8A4F3B" letter-spacing="-0.6" opacity="0.4">03</text>
+          <text y="94" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#FAFAF8" letter-spacing="1.8" font-weight="500">CULTURE</text>
+          <text y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8A4F3B" letter-spacing="1.8" font-weight="500" opacity="0.7">CAPABILITIES</text>
+          <text y="210" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#8A4F3B" letter-spacing="1.8" font-weight="500" opacity="0.55">MISSION</text>
+        </g>
+      </svg>
+    </section>
+
+    <!-- ── Image break 3 ─────────────────────────────────── -->
+    <div class="image-break fade-in">
+      <div class="image-quote">
+        <p>"Generic AI is generic by design. Complement is engineered."</p>
+        <cite>&mdash; Agentic OS · the unlock</cite>
+      </div>
+      <img src="assets/road.jpg" alt="Road through the landscape" loading="lazy" />
+    </div>
+
+    <!-- ── Layer 03 · Agentic OS ──────────────────────────── -->
+    <section class="section os-section agentic fade-in">
+      <div class="os-copy">
+        <span class="os-layer-mark" aria-hidden="true">03</span>
+        <span class="eyebrow accent-agentic">Layer 03 · Agentic OS</span>
+        <h2>How your AI complements.</h2>
+        <p class="os-body">AI agents with designed personalities, built to balance the human — not mirror them. If you're wired one way, your agent is engineered opposite.</p>
+        <a href="agentic-os.html" class="os-link">
+          Explore Agentic OS <span aria-hidden="true">→</span>
+        </a>
+      </div>
+
+      <!-- ══ ILLUSTRATION: Layer rings (agentic accent) ══ -->
+      <svg class="illus illus-layers" viewBox="0 0 440 440" role="img" aria-label="Three sub-layers compound into Agentic OS">
+        <g transform="translate(220, 220)">
+          <circle r="190" fill="#3D5A7D" fill-opacity="0.05"/>
+          <circle r="190" fill="none" stroke="#3D5A7D" stroke-opacity="0.16" stroke-width="1"/>
+          <circle r="130" fill="#3D5A7D" fill-opacity="0.11"/>
+          <circle r="130" fill="none" stroke="#3D5A7D" stroke-opacity="0.24" stroke-width="1"/>
+          <circle r="72" fill="#3D5A7D"/>
+          <text y="6" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="30" fill="#FAFAF8" letter-spacing="-0.8">01</text>
+          <text y="-92" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#3D5A7D" letter-spacing="-0.6" opacity="0.6">02</text>
+          <text y="-152" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="720" font-size="22" fill="#3D5A7D" letter-spacing="-0.6" opacity="0.4">03</text>
+          <text y="94" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#FAFAF8" letter-spacing="1.8" font-weight="500">PERSONALITY</text>
+          <text y="150" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#3D5A7D" letter-spacing="1.8" font-weight="500" opacity="0.7">EXPERIENCE</text>
+          <text y="210" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="9" fill="#3D5A7D" letter-spacing="1.8" font-weight="500" opacity="0.55">MINDSET</text>
+        </g>
+      </svg>
+    </section>
+
+    <!-- ── The unlock / compound visual + text ─────────────── -->
+    <section class="section fade-in">
+      <div class="section-head section-head-wide">
+        <span class="eyebrow">Why it compounds</span>
+        <h2>Each layer sharpens the others.</h2>
+        <p>The real leverage isn't any one OS — it's that humans, organizations, and AI agents get mapped against the same framework. For the first time the wiring of all three can be compared, paired, and composed.</p>
+      </div>
+
+      <!-- ══ ILLUSTRATION: Three-way compound Venn ══ -->
+      <svg class="illus illus-flow3" viewBox="0 0 720 380" role="img" aria-label="Three layers overlap into a shared operating language">
+        <g>
+          <circle cx="230" cy="210" r="145" fill="#2A5D58" fill-opacity="0.22"/>
+          <circle cx="360" cy="210" r="145" fill="#8A4F3B" fill-opacity="0.22"/>
+          <circle cx="490" cy="210" r="145" fill="#3D5A7D" fill-opacity="0.22"/>
+        </g>
+        <circle cx="360" cy="210" r="22" fill="#1B3D3A"/>
+        <text x="360" y="215" text-anchor="middle" font-family="Outfit, sans-serif" font-size="14" font-weight="700" fill="#FAFAF8" letter-spacing="-0.3">NPM</text>
+
+        <text x="230" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#2A5D58" letter-spacing="1.8" font-weight="500">HUMAN</text>
+        <text x="360" y="46" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#8A4F3B" letter-spacing="1.8" font-weight="500">BUSINESS</text>
+        <text x="490" y="72" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#3D5A7D" letter-spacing="1.8" font-weight="500">AGENTIC</text>
+
+        <text x="360" y="358" text-anchor="middle" font-family="Outfit, sans-serif" font-weight="650" font-size="17" fill="#1B3D3A" letter-spacing="-0.3">Shared operating language</text>
+      </svg>
+
+      <div class="process-flow">
+        <div class="process-step">
+          <span class="step-num">01</span>
+          <h4>Self-awareness scales</h4>
+          <p>A person reads their own Human OS. An org reads its Business OS. An AI agent is built on an Agentic OS. Each one stops performing and starts operating.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">02</span>
+          <h4>Pairs become designable</h4>
+          <p>If a human is wired one way, their complement agent is engineered opposite. If an org is wired one way, the people it needs become obvious. Fit is no longer a guess.</p>
+        </div>
+        <div class="process-step">
+          <span class="step-num">03</span>
+          <h4>Alignment compounds</h4>
+          <p>The three layers stop operating on different vocabularies. Humans, orgs, and AI start reading the same map — and the map sharpens every time someone uses it.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── CO-CREATE (you + AI build your OS together) ───── -->
+    <section class="section fade-in">
+      <div class="section-head section-head-wide">
+        <span class="eyebrow">Co-created, not consumed</span>
+        <h2>You and the AI build your OS together.</h2>
+        <p>NPM isn't something you read off a shelf. It's something you co-create — with an AI that knows the framework, asks the right questions, and writes your profile with you. You bring the story. The AI brings the structure. You walk out with a living map you own.</p>
+      </div>
+
+      <!-- ══ ILLUSTRATION: Co-create scene ══ -->
+      <svg class="illus illus-cocreate" viewBox="0 0 820 400" role="img" aria-label="You, AI, and your emerging OS in a co-creation loop">
+        <defs>
+          <marker id="arr-pet" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="#2A5D58"/>
+          </marker>
+          <marker id="arr-ter" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto">
+            <path d="M0,0 L10,5 L0,10 Z" fill="#8A4F3B"/>
+          </marker>
+        </defs>
+
+        <!-- Human figure (YOU) -->
+        <g transform="translate(140, 180)">
+          <circle cx="0" cy="-52" r="28" fill="#2A5D58"/>
+          <path d="M -46 46 Q 0 -10 46 46 L 46 86 L -46 86 Z" fill="#2A5D58"/>
+          <text x="0" y="130" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#2A5D58" letter-spacing="1.8" font-weight="500">YOU</text>
+          <text x="0" y="150" text-anchor="middle" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#1A1918" letter-spacing="-0.2">Show up honest</text>
+        </g>
+
+        <!-- Arrow YOU → AI -->
+        <path d="M 215 180 Q 280 180 330 180" fill="none" stroke="#2A5D58" stroke-width="1.5" stroke-linecap="round" opacity="0.55" marker-end="url(#arr-pet)"/>
+
+        <!-- AI glyph -->
+        <g transform="translate(410, 180)">
+          <circle r="76" fill="none" stroke="#1A1918" stroke-opacity="0.12" stroke-width="1"/>
+          <circle r="54" fill="none" stroke="#1A1918" stroke-opacity="0.22" stroke-width="1"/>
+          <circle r="34" fill="#1A1918"/>
+          <!-- 4-point sparkle -->
+          <path d="M 0 -16 C 2 -6 6 -2 16 0 C 6 2 2 6 0 16 C -2 6 -6 2 -16 0 C -6 -2 -2 -6 0 -16 Z" fill="#FAFAF8"/>
+          <text x="0" y="130" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#54504C" letter-spacing="1.8" font-weight="500">AI · CO-AUTHOR</text>
+          <text x="0" y="150" text-anchor="middle" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#1A1918" letter-spacing="-0.2">Asks, listens, drafts</text>
+        </g>
+
+        <!-- Arrow AI → DOC -->
+        <path d="M 490 180 Q 550 180 600 180" fill="none" stroke="#8A4F3B" stroke-width="1.5" stroke-linecap="round" opacity="0.55" marker-end="url(#arr-ter)"/>
+
+        <!-- Document (your OS) -->
+        <g transform="translate(680, 180)">
+          <!-- back paper -->
+          <rect x="-42" y="-58" width="88" height="112" rx="3" fill="#F5E4D6"/>
+          <!-- front paper -->
+          <rect x="-50" y="-66" width="88" height="112" rx="3" fill="#FAFAF8" stroke="#1A1918" stroke-width="1.3"/>
+          <!-- top strong line (title) -->
+          <rect x="-42" y="-55" width="68" height="4" rx="1" fill="#2A5D58"/>
+          <rect x="-42" y="-44" width="42" height="2" rx="1" fill="#54504C" opacity="0.5"/>
+          <!-- body lines -->
+          <rect x="-42" y="-28" width="72" height="2" rx="1" fill="#54504C" opacity="0.5"/>
+          <rect x="-42" y="-20" width="56" height="2" rx="1" fill="#54504C" opacity="0.5"/>
+          <rect x="-42" y="-12" width="64" height="2" rx="1" fill="#54504C" opacity="0.5"/>
+          <rect x="-42" y="2" width="72" height="2" rx="1" fill="#54504C" opacity="0.5"/>
+          <rect x="-42" y="10" width="40" height="2" rx="1" fill="#54504C" opacity="0.5"/>
+          <rect x="-42" y="18" width="60" height="2" rx="1" fill="#54504C" opacity="0.5"/>
+          <rect x="-42" y="26" width="54" height="2" rx="1" fill="#54504C" opacity="0.5"/>
+          <!-- corner stamp -->
+          <circle cx="-30" cy="40" r="6" fill="#2A5D58"/>
+          <text x="0" y="130" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#2A5D58" letter-spacing="1.8" font-weight="500">YOUR OS</text>
+          <text x="0" y="150" text-anchor="middle" font-family="Outfit, sans-serif" font-size="13" font-weight="600" fill="#1A1918" letter-spacing="-0.2">Emerges, alive</text>
+        </g>
+
+        <!-- Iteration loop: DOC → YOU (bottom curve) -->
+        <path d="M 680 260 Q 680 340 410 340 Q 140 340 80 280" fill="none" stroke="#2A5D58" stroke-width="1.5" stroke-linecap="round" opacity="0.5" marker-end="url(#arr-pet)"/>
+        <text x="410" y="378" text-anchor="middle" font-family="IBM Plex Mono, monospace" font-size="10" fill="#858079" letter-spacing="2" font-weight="500">ITERATE · YOU CHANGE, YOUR OS CHANGES</text>
+      </svg>
+    </section>
+
+    <!-- ── Use cases ──────────────────────────────────────── -->
+    <section class="section fade-in">
+      <div class="section-head">
+        <span class="eyebrow">Where it lands</span>
+        <h2>Where it's already earning its keep.</h2>
+        <p>Used inside ventures and teams to turn fuzzy human judgment into structured, reusable signal.</p>
+      </div>
+
+      <div class="use-cases">
+        <div class="use-case">
+          <span class="uc-num">Use case 01</span>
+          <h4>Team formation</h4>
+          <p>Forming founding teams from complementary wirings — not overlapping strengths. The first five either compound each other or quietly collide; NPM makes which one visible before the cap table is signed.</p>
+        </div>
+        <div class="use-case">
+          <span class="uc-num">Use case 02</span>
+          <h4>Co-founder alignment</h4>
+          <p>Surfacing friction points before they break the partnership. Two Human OS profiles read side by side say more than months of "founder compatibility" coffee.</p>
+        </div>
+        <div class="use-case">
+          <span class="uc-num">Use case 03</span>
+          <h4>Personal development</h4>
+          <p>Knowing where you thrive, where you break, and where the next edge of growth actually lives. The framework stops being an HR exercise and starts being a practice.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Final CTA — co-create your layer ──────────────── -->
+    <section id="start" class="section fade-in">
+      <div class="cta-final">
+        <div class="cta-head">
+          <span class="eyebrow">Co-create yours</span>
+          <h2>Pick a layer. Build it with AI.</h2>
+          <p>Every path runs self-serve with an AI that knows the framework. No calls booked. No consultants. You, the AI, and a living OS at the end of it.</p>
+        </div>
+
+        <div class="cta-actions">
+          <a href="human-os.html#build">
+            <span>Co-create your Human OS</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="business-os.html#map">
+            <span>Co-create your Business OS</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+          <a href="agentic-os.html#agent">
+            <span>Generate your complement agent</span>
+            <span class="arrow" aria-hidden="true">→</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ── Footer ─────────────────────────────────────────── -->
+    <footer class="site-footer">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <span class="brand">
+            <span class="brand-dot"></span>
+            <span>NPM</span>
+          </span>
+          <p>The New Practice Mindset. An open framework for humans, organizations, and AI to work as one.</p>
+        </div>
+
+        <div class="footer-col">
+          <h5>Layers</h5>
+          <ul>
+            <li><a href="human-os.html">Human OS</a></li>
+            <li><a href="business-os.html">Business OS</a></li>
+            <li><a href="agentic-os.html">Agentic OS</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>Co-create</h5>
+          <ul>
+            <li><a href="human-os.html#build">Your Human OS</a></li>
+            <li><a href="business-os.html#map">Your Business OS</a></li>
+            <li><a href="agentic-os.html#agent">Complement agent</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-col">
+          <h5>About</h5>
+          <ul>
+            <li><a href="https://augustkring.com" target="_blank" rel="noopener">August Kring</a></li>
+            <li><a href="https://www.linkedin.com/in/augustkring/" target="_blank" rel="noopener">LinkedIn</a></li>
+            <li><a href="mailto:ak@augustkring.com">Email</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-meta">
+        <span>© 2026 · Open framework · Share it</span>
+        <span>v0.4 mockup</span>
+      </div>
+    </footer>
+
   </main>
+
+  <script src="assets/shared.js"></script>
 </body>
 </html>
